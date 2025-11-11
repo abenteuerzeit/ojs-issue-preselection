@@ -49,3 +49,6 @@ msgstr "The selected issue is not available for submission."
 
 msgid "plugins.generic.issuePreselection.error.required"
 msgstr "Please select an issue for your submission."
+
+msgid "plugins.generic.issuePreselection.error.issueRequired"
+msgstr "Please select an issue for your submission."

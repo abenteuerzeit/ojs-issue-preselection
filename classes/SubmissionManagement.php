@@ -106,7 +106,7 @@ class SubmissionManagement
         }
         
         $issueOptions = [[
-            'value' => '',
+            'value' => 0,
             'label' => __('plugins.generic.issuePreselection.selectOption')
         ]];
         
@@ -123,7 +123,7 @@ class SubmissionManagement
             'label' => __('plugins.generic.issuePreselection.issueLabel'),
             'description' => __('plugins.generic.issuePreselection.description.field'),
             'options' => $issueOptions,
-            'value' => $currentValue ? (int) $currentValue : '',
+            'value' => $currentValue ? (int) $currentValue : 0,
             'isRequired' => true,
             'groupId' => 'default'
         ];
@@ -133,10 +133,10 @@ class SubmissionManagement
         if (!isset($config['values'])) {
             $config['values'] = [];
         }
-        $config['values']['preselectedIssueId'] = $currentValue ? (int) $currentValue : '';
+        $config['values']['preselectedIssueId'] = $currentValue ? (int) $currentValue : 0;
         
-        error_log("[IssuePreselection] Added preselectedIssueId field to form config with value: " . ($currentValue ?: 'empty'));
-        error_log("[IssuePreselection] Set form values[preselectedIssueId]: " . ($currentValue ?: 'empty'));
+        error_log("[IssuePreselection] Added preselectedIssueId field to form config with value: " . ($currentValue ?: '0'));
+        error_log("[IssuePreselection] Set form values[preselectedIssueId]: " . ($currentValue ?: '0'));
         
         return false;
     }
@@ -185,8 +185,8 @@ class SubmissionManagement
         
         $smarty->assign('issuePreselectionMap', $issueMap);
         
-        // Output Vue-compatible template
-        $output .= '<div class="submissionWizard__reviewPanel__item" v-if="submission.preselectedIssueId">';
+        // Output Vue-compatible template - show when issue is selected
+        $output .= '<div class="submissionWizard__reviewPanel__item" v-if="submission.preselectedIssueId && submission.preselectedIssueId !== 0">';
         $output .= '<h4 class="submissionWizard__reviewPanel__item__header">';
         $output .= htmlspecialchars(__('plugins.generic.issuePreselection.issueLabel'));
         $output .= '</h4>';
@@ -203,6 +203,17 @@ class SubmissionManagement
         }
         $output .= ' : "" }}';
         
+        $output .= '</div>';
+        $output .= '</div>';
+        
+        // Output warning when no issue is selected
+        $output .= '<div class="submissionWizard__reviewPanel__item" v-if="!submission.preselectedIssueId || submission.preselectedIssueId === 0">';
+        $output .= '<h4 class="submissionWizard__reviewPanel__item__header">';
+        $output .= htmlspecialchars(__('plugins.generic.issuePreselection.issueLabel'));
+        $output .= '</h4>';
+        $output .= '<div class="submissionWizard__reviewPanel__item__value" style="color: #d00;">';
+        $output .= '<span class="fa fa-exclamation-triangle" aria-hidden="true"></span> ';
+        $output .= htmlspecialchars(__('plugins.generic.issuePreselection.error.issueRequired'));
         $output .= '</div>';
         $output .= '</div>';
         
@@ -228,9 +239,19 @@ class SubmissionManagement
         
         error_log("[IssuePreselection] Preselected issue ID: " . ($issueId ?: 'none'));
         
-        if (!$issueId) {
-            error_log("[IssuePreselection] No issue preselected, skipping");
-            return false;
+        // Check if there are any open issues available
+        $issueManagement = new \APP\plugins\generic\issuePreselection\classes\IssueManagement($this->plugin);
+        $openIssues = $issueManagement->getOpenFutureIssues($context->getId());
+        
+        // Only validate if there are open issues available
+        if (!empty($openIssues)) {
+            if (!$issueId || $issueId === 0) {
+                error_log("[IssuePreselection] Validation failed: No issue selected");
+                $errors['preselectedIssueId'] = [__('plugins.generic.issuePreselection.error.issueRequired')];
+                // Don't return true - let other validations run, but the error is set
+            }
+        } else {
+            error_log("[IssuePreselection] No open issues available, skipping validation");
         }
         
         $issue = Repo::issue()->get($issueId);
