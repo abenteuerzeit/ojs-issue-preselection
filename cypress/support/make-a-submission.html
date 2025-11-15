@@ -1,0 +1,3713 @@
+<html lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Make a Submission | Journal of Philosophy</title>
+
+    <meta name="generator" content="Open Journal Systems 3.5.0.1" />
+    <link
+      rel="stylesheet"
+      href="https://localhost:8443/lib/pkp/styles/fontawesome/fontawesome.css?v=3.5.0.1"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://localhost:8443/styles/build.css?v=3.5.0.1"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://localhost:8443/index.php/JOP/$$$call$$$/page/page/css?v=3.5.0.1"
+      type="text/css"
+    />
+    <script
+      src="https://localhost:8443/index.php/JOP/api/v1/_i18n/ui.js?hash=b98b1f53baba98368d5b3051e94b33d0c5912b7e"
+      type="text/javascript"
+    ></script>
+    <script
+      src="https://localhost:8443/js/build/jquery/jquery.min.js?v=3.5.0.1"
+      type="text/javascript"
+    ></script>
+    <script
+      src="https://localhost:8443/js/build/jquery-ui/jquery-ui.min.js?v=3.5.0.1"
+      type="text/javascript"
+    ></script>
+    <script type="text/javascript">
+      $.pkp = $.pkp || {};
+      $.pkp.app = {
+        currentLocale: "en",
+        primaryLocale: "en",
+        baseUrl: "https:\/\/localhost:8443",
+        contextPath: "JOP",
+        apiBasePath: "\/api\/v1",
+        restfulUrlsEnabled: false,
+        tinyMceContentCSS: [
+          "https:\/\/localhost:8443\/plugins\/generic\/tinymce\/styles\/content.css",
+          "https:\/\/localhost:8443\/lib\/pkp\/styles\/mailables\/style.css",
+        ],
+        tinyMceOneLineContentCSS:
+          "https:\/\/localhost:8443\/plugins\/generic\/tinymce\/styles\/content_oneline.css",
+        rtlLocales: [],
+      };
+      $.pkp.cons = {
+        LISTBUILDER_SOURCE_TYPE_TEXT: 0,
+        LISTBUILDER_SOURCE_TYPE_SELECT: 1,
+        LISTBUILDER_OPTGROUP_LABEL: "optGroupLabel",
+        REALLY_BIG_NUMBER: 10000,
+        UPLOAD_MAX_FILESIZE: "10M",
+        WORKFLOW_STAGE_ID_PUBLISHED: 0,
+        WORKFLOW_STAGE_ID_SUBMISSION: 1,
+        WORKFLOW_STAGE_ID_INTERNAL_REVIEW: 2,
+        WORKFLOW_STAGE_ID_EXTERNAL_REVIEW: 3,
+        WORKFLOW_STAGE_ID_EDITING: 4,
+        WORKFLOW_STAGE_ID_PRODUCTION: 5,
+        INSERT_TAG_VARIABLE_TYPE_PLAIN_TEXT: "PLAIN_TEXT",
+        ROLE_ID_MANAGER: 16,
+        ROLE_ID_SITE_ADMIN: 1,
+        ROLE_ID_AUTHOR: 65536,
+        ROLE_ID_REVIEWER: 4096,
+        ROLE_ID_ASSISTANT: 4097,
+        ROLE_ID_READER: 1048576,
+        ROLE_ID_SUB_EDITOR: 17,
+        ROLE_ID_SUBSCRIPTION_MANAGER: 2097152,
+        STATUS_QUEUED: 1,
+        STATUS_PUBLISHED: 3,
+        STATUS_DECLINED: 4,
+        STATUS_SCHEDULED: 5,
+      };
+      $.pkp.plugins = {};
+    </script>
+    <script
+      src="https://localhost:8443/js/build/jquery-validation/jquery.validate.min.js?v=3.5.0.1"
+      type="text/javascript"
+    ></script>
+    <script
+      src="https://localhost:8443/lib/pkp/lib/vendor/moxiecode/plupload/js/plupload.full.min.js?v=3.5.0.1"
+      type="text/javascript"
+    ></script>
+    <script
+      src="https://localhost:8443/lib/pkp/lib/vendor/moxiecode/plupload/js/jquery.ui.plupload/jquery.ui.plupload.js?v=3.5.0.1"
+      type="text/javascript"
+    ></script>
+    <script
+      src="https://localhost:8443/lib/pkp/lib/vendor/moxiecode/plupload/js/i18n/en.js?v=3.5.0.1"
+      type="text/javascript"
+    ></script>
+    <script
+      src="https://localhost:8443/js/pkp.min.js?v=3.5.0.1"
+      type="text/javascript"
+    ></script>
+    <script type="text/javascript">
+      window.pkp = window.pkp || {};
+      pkp.const = {
+        LISTBUILDER_SOURCE_TYPE_TEXT: 0,
+        LISTBUILDER_SOURCE_TYPE_SELECT: 1,
+        LISTBUILDER_OPTGROUP_LABEL: "optGroupLabel",
+        REALLY_BIG_NUMBER: 10000,
+        UPLOAD_MAX_FILESIZE: "10M",
+        WORKFLOW_STAGE_ID_PUBLISHED: 0,
+        WORKFLOW_STAGE_ID_SUBMISSION: 1,
+        WORKFLOW_STAGE_ID_INTERNAL_REVIEW: 2,
+        WORKFLOW_STAGE_ID_EXTERNAL_REVIEW: 3,
+        WORKFLOW_STAGE_ID_EDITING: 4,
+        WORKFLOW_STAGE_ID_PRODUCTION: 5,
+        INSERT_TAG_VARIABLE_TYPE_PLAIN_TEXT: "PLAIN_TEXT",
+        ROLE_ID_MANAGER: 16,
+        ROLE_ID_SITE_ADMIN: 1,
+        ROLE_ID_AUTHOR: 65536,
+        ROLE_ID_REVIEWER: 4096,
+        ROLE_ID_ASSISTANT: 4097,
+        ROLE_ID_READER: 1048576,
+        ROLE_ID_SUB_EDITOR: 17,
+        ROLE_ID_SUBSCRIPTION_MANAGER: 2097152,
+        STATUS_QUEUED: 1,
+        STATUS_PUBLISHED: 3,
+        STATUS_DECLINED: 4,
+        STATUS_SCHEDULED: 5,
+      };
+      pkp.context = {
+        app: "ojs2",
+        currentLocale: "en",
+        primaryLocale: "en",
+        apiBaseUrl: "https:\/\/localhost:8443\/index.php\/JOP\/api\/v1\/",
+        pageBaseUrl: "https:\/\/localhost:8443\/index.php\/JOP\/",
+        legacyGridBaseUrl:
+          "https:\/\/localhost:8443\/index.php\/JOP\/$$$call$$$\/component\/action",
+        helpUrl: "https:\/\/docs.pkp.sfu.ca\/learning-ojs\/",
+        timeZone: "Europe\/Warsaw",
+        dateFormatShort: "Y-m-d",
+        dateFormatLong: "F j, Y",
+        datetimeFormatShort: "Y-m-d H:i",
+        datetimeFormatLong: "F j, Y - H:i",
+        timeFormat: "H:i",
+        supportedLocales: { en: "English" },
+      };
+      pkp.currentUser = {
+        csrfToken: "5I5kWxbQAOJ4ETd5NxgkkC63UNjESzdXe0QLWbKD",
+        id: 1,
+        roles: [1, 16],
+        unreadTasksCount: 1,
+        fullName: "Adrian STROMIT",
+        username: "admin",
+        initials: "AS",
+        isUserLoggedInAs: false,
+        loggedInAsUser: null,
+      };
+    </script>
+    <script
+      src="https://localhost:8443/lib/pkp/lib/vendor/tinymce/tinymce/tinymce.min.js?v=3.5.0.1"
+      type="text/javascript"
+    ></script>
+    <script type="text/javascript">
+      $.pkp.plugins.generic = $.pkp.plugins.generic || {};
+      $.pkp.plugins.generic.tinymceplugin = {
+        uploadUrl:
+          "https:\/\/localhost:8443\/index.php\/JOP\/api\/v1\/_uploadPublicFile",
+      };
+    </script>
+    <script
+      src="https://localhost:8443/js/build.js?v=3.5.0.1"
+      type="text/javascript"
+    ></script>
+    <style type="text/css">
+      .vc-compact {
+        padding-top: 5px;
+        padding-left: 5px;
+        width: 245px;
+        border-radius: 2px;
+        box-sizing: border-box;
+        box-shadow:
+          0 2px 10px rgba(0, 0, 0, 0.12),
+          0 2px 5px rgba(0, 0, 0, 0.16);
+        background-color: #fff;
+      }
+
+      .vc-compact-colors {
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+      }
+
+      .vc-compact-color-item {
+        list-style: none;
+        width: 15px;
+        height: 15px;
+        float: left;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .vc-compact-color-item--white {
+        box-shadow: inset 0 0 0 1px #ddd;
+      }
+
+      .vc-compact-color-item--white .vc-compact-dot {
+        background: #000;
+      }
+
+      .vc-compact-dot {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        bottom: 5px;
+        left: 5px;
+        border-radius: 50%;
+        opacity: 1;
+        background: #fff;
+      }
+    </style>
+    <style type="text/css">
+      .vc-grayscale {
+        width: 125px;
+        border-radius: 2px;
+        box-shadow:
+          0 2px 15px rgba(0, 0, 0, 0.12),
+          0 2px 10px rgba(0, 0, 0, 0.16);
+        background-color: #fff;
+      }
+
+      .vc-grayscale-colors {
+        border-radius: 2px;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+      }
+
+      .vc-grayscale-color-item {
+        list-style: none;
+        width: 25px;
+        height: 25px;
+        float: left;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .vc-grayscale-color-item--white .vc-grayscale-dot {
+        background: #000;
+      }
+
+      .vc-grayscale-dot {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 6px;
+        height: 6px;
+        margin: -3px 0 0 -2px;
+        border-radius: 50%;
+        opacity: 1;
+        background: #fff;
+      }
+    </style>
+    <style type="text/css">
+      .vc-editable-input {
+        position: relative;
+      }
+
+      .vc-input__input {
+        padding: 0;
+        border: 0;
+        outline: none;
+      }
+
+      .vc-input__label {
+        text-transform: capitalize;
+      }
+    </style>
+    <style type="text/css">
+      .vc-material {
+        width: 98px;
+        height: 98px;
+        padding: 16px;
+        font-family: Roboto;
+        position: relative;
+        border-radius: 2px;
+        box-shadow:
+          0 2px 10px rgba(0, 0, 0, 0.12),
+          0 2px 5px rgba(0, 0, 0, 0.16);
+        background-color: #fff;
+      }
+
+      .vc-material .vc-input__input {
+        width: 100%;
+        margin-top: 12px;
+        font-size: 15px;
+        color: #333;
+        height: 30px;
+      }
+
+      .vc-material .vc-input__label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 11px;
+        color: #999;
+        text-transform: capitalize;
+      }
+
+      .vc-material-hex {
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+      }
+
+      .vc-material-split {
+        display: flex;
+        margin-right: -10px;
+        padding-top: 11px;
+      }
+
+      .vc-material-third {
+        flex: 1;
+        padding-right: 10px;
+      }
+    </style>
+    <style type="text/css">
+      .vc-hue {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 2px;
+      }
+
+      .vc-hue--horizontal {
+        background: linear-gradient(
+          90deg,
+          red 0,
+          #ff0 17%,
+          #0f0 33%,
+          #0ff 50%,
+          #00f 67%,
+          #f0f 83%,
+          red
+        );
+      }
+
+      .vc-hue--vertical {
+        background: linear-gradient(
+          0deg,
+          red 0,
+          #ff0 17%,
+          #0f0 33%,
+          #0ff 50%,
+          #00f 67%,
+          #f0f 83%,
+          red
+        );
+      }
+
+      .vc-hue-container {
+        cursor: pointer;
+        margin: 0 2px;
+        position: relative;
+        height: 100%;
+      }
+
+      .vc-hue-pointer {
+        z-index: 2;
+        position: absolute;
+      }
+
+      .vc-hue-picker {
+        cursor: pointer;
+        margin-top: 1px;
+        width: 4px;
+        border-radius: 1px;
+        height: 8px;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+        background: #fff;
+        transform: translateX(-2px);
+      }
+    </style>
+    <style type="text/css">
+      .vc-slider {
+        position: relative;
+        width: 410px;
+      }
+
+      .vc-slider-hue-warp {
+        height: 12px;
+        position: relative;
+      }
+
+      .vc-slider-hue-warp .vc-hue-picker {
+        width: 14px;
+        height: 14px;
+        border-radius: 6px;
+        transform: translate(-7px, -2px);
+        background-color: #f8f8f8;
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+      }
+
+      .vc-slider-swatches {
+        display: flex;
+        margin-top: 20px;
+      }
+
+      .vc-slider-swatch {
+        margin-right: 1px;
+        flex: 1;
+        width: 20%;
+      }
+
+      .vc-slider-swatch:first-child {
+        margin-right: 1px;
+      }
+
+      .vc-slider-swatch:first-child .vc-slider-swatch-picker {
+        border-radius: 2px 0 0 2px;
+      }
+
+      .vc-slider-swatch:last-child {
+        margin-right: 0;
+      }
+
+      .vc-slider-swatch:last-child .vc-slider-swatch-picker {
+        border-radius: 0 2px 2px 0;
+      }
+
+      .vc-slider-swatch-picker {
+        cursor: pointer;
+        height: 12px;
+      }
+
+      .vc-slider-swatch:nth-child(n)
+        .vc-slider-swatch-picker.vc-slider-swatch-picker--active {
+        transform: scaleY(1.8);
+        border-radius: 3.6px/2px;
+      }
+
+      .vc-slider-swatch-picker--white {
+        box-shadow: inset 0 0 0 1px #ddd;
+      }
+
+      .vc-slider-swatch-picker--active.vc-slider-swatch-picker--white {
+        box-shadow: inset 0 0 0 0.6px #ddd;
+      }
+    </style>
+    <style type="text/css">
+      .vc-swatches {
+        width: 320px;
+        height: 240px;
+        overflow-y: scroll;
+        background-color: #fff;
+        box-shadow:
+          0 2px 10px rgba(0, 0, 0, 0.12),
+          0 2px 5px rgba(0, 0, 0, 0.16);
+      }
+
+      .vc-swatches-box {
+        padding: 16px 0 6px 16px;
+        overflow: hidden;
+      }
+
+      .vc-swatches-color-group {
+        padding-bottom: 10px;
+        width: 40px;
+        float: left;
+        margin-right: 10px;
+      }
+
+      .vc-swatches-color-it {
+        box-sizing: border-box;
+        width: 40px;
+        height: 24px;
+        cursor: pointer;
+        background: #880e4f;
+        margin-bottom: 1px;
+        overflow: hidden;
+        border-radius: 2px 2px 0 0;
+      }
+
+      .vc-swatches-color--white {
+        border: 1px solid #ddd;
+      }
+
+      .vc-swatches-pick {
+        fill: #fff;
+        margin-left: 8px;
+        display: block;
+      }
+
+      .vc-swatches-color--white .vc-swatches-pick {
+        fill: #333;
+      }
+    </style>
+    <style type="text/css">
+      .vc-saturation,
+      .vc-saturation--black,
+      .vc-saturation--white {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      .vc-saturation--white {
+        background: linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
+      }
+
+      .vc-saturation--black {
+        background: linear-gradient(0deg, #000, transparent);
+      }
+
+      .vc-saturation-pointer {
+        cursor: pointer;
+        position: absolute;
+      }
+
+      .vc-saturation-circle {
+        cursor: head;
+        width: 4px;
+        height: 4px;
+        box-shadow:
+          0 0 0 1.5px #fff,
+          inset 0 0 1px 1px rgba(0, 0, 0, 0.3),
+          0 0 1px 2px rgba(0, 0, 0, 0.4);
+        border-radius: 50%;
+        transform: translate(-2px, -2px);
+      }
+    </style>
+    <style type="text/css">
+      .vc-photoshop {
+        background: #dcdcdc;
+        border-radius: 4px;
+        box-shadow:
+          0 0 0 1px rgba(0, 0, 0, 0.25),
+          0 8px 16px rgba(0, 0, 0, 0.15);
+        box-sizing: initial;
+        width: 513px;
+        font-family: Roboto;
+      }
+
+      .vc-photoshop__disable-fields {
+        width: 390px;
+      }
+
+      .vc-ps-head {
+        background-image: linear-gradient(-180deg, #f0f0f0, #d4d4d4);
+        border-bottom: 1px solid #b1b1b1;
+        box-shadow:
+          inset 0 1px 0 0 hsla(0, 0%, 100%, 0.2),
+          inset 0 -1px 0 0 rgba(0, 0, 0, 0.02);
+        height: 23px;
+        line-height: 24px;
+        border-radius: 4px 4px 0 0;
+        font-size: 13px;
+        color: #4d4d4d;
+        text-align: center;
+      }
+
+      .vc-ps-body {
+        padding: 15px;
+        display: flex;
+      }
+
+      .vc-ps-saturation-wrap {
+        width: 256px;
+        height: 256px;
+        position: relative;
+        border: 2px solid #b3b3b3;
+        border-bottom: 2px solid #f0f0f0;
+        overflow: hidden;
+      }
+
+      .vc-ps-saturation-wrap .vc-saturation-circle {
+        width: 12px;
+        height: 12px;
+      }
+
+      .vc-ps-hue-wrap {
+        height: 256px;
+        width: 19px;
+        margin-left: 10px;
+        border: 2px solid #b3b3b3;
+        border-bottom: 2px solid #f0f0f0;
+      }
+
+      .vc-ps-hue-pointer,
+      .vc-ps-hue-wrap {
+        position: relative;
+      }
+
+      .vc-ps-hue-pointer--left,
+      .vc-ps-hue-pointer--right {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 5px 0 5px 8px;
+        border-color: transparent transparent transparent #555;
+      }
+
+      .vc-ps-hue-pointer--left:after,
+      .vc-ps-hue-pointer--right:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 4px 0 4px 6px;
+        border-color: transparent transparent transparent #fff;
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        transform: translate(-8px, -5px);
+      }
+
+      .vc-ps-hue-pointer--left {
+        transform: translate(-13px, -4px);
+      }
+
+      .vc-ps-hue-pointer--right {
+        transform: translate(20px, -4px) rotate(180deg);
+      }
+
+      .vc-ps-controls {
+        width: 180px;
+        margin-left: 10px;
+        display: flex;
+      }
+
+      .vc-ps-controls__disable-fields {
+        width: auto;
+      }
+
+      .vc-ps-actions {
+        margin-left: 20px;
+        flex: 1;
+      }
+
+      .vc-ps-ac-btn {
+        cursor: pointer;
+        background-image: linear-gradient(-180deg, #fff, #e6e6e6);
+        border: 1px solid #878787;
+        border-radius: 2px;
+        height: 20px;
+        box-shadow: 0 1px 0 0 #eaeaea;
+        font-size: 14px;
+        color: #000;
+        line-height: 20px;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .vc-ps-previews {
+        width: 60px;
+      }
+
+      .vc-ps-previews__swatches {
+        border: 1px solid #b3b3b3;
+        border-bottom: 1px solid #f0f0f0;
+        margin-bottom: 2px;
+        margin-top: 1px;
+      }
+
+      .vc-ps-previews__pr-color {
+        height: 34px;
+        box-shadow:
+          inset 1px 0 0 #000,
+          inset -1px 0 0 #000,
+          inset 0 1px 0 #000;
+      }
+
+      .vc-ps-previews__label {
+        font-size: 14px;
+        color: #000;
+        text-align: center;
+      }
+
+      .vc-ps-fields {
+        padding-top: 5px;
+        padding-bottom: 9px;
+        width: 80px;
+        position: relative;
+      }
+
+      .vc-ps-fields .vc-input__input {
+        margin-left: 40%;
+        width: 40%;
+        height: 18px;
+        border: 1px solid #888;
+        box-shadow:
+          inset 0 1px 1px rgba(0, 0, 0, 0.1),
+          0 1px 0 0 #ececec;
+        margin-bottom: 5px;
+        font-size: 13px;
+        padding-left: 3px;
+        margin-right: 10px;
+      }
+
+      .vc-ps-fields .vc-input__desc,
+      .vc-ps-fields .vc-input__label {
+        top: 0;
+        text-transform: uppercase;
+        font-size: 13px;
+        height: 18px;
+        line-height: 22px;
+        position: absolute;
+      }
+
+      .vc-ps-fields .vc-input__label {
+        left: 0;
+        width: 34px;
+      }
+
+      .vc-ps-fields .vc-input__desc {
+        right: 0;
+        width: 0;
+      }
+
+      .vc-ps-fields__divider {
+        height: 5px;
+      }
+
+      .vc-ps-fields__hex .vc-input__input {
+        margin-left: 20%;
+        width: 80%;
+        height: 18px;
+        border: 1px solid #888;
+        box-shadow:
+          inset 0 1px 1px rgba(0, 0, 0, 0.1),
+          0 1px 0 0 #ececec;
+        margin-bottom: 6px;
+        font-size: 13px;
+        padding-left: 3px;
+      }
+
+      .vc-ps-fields__hex .vc-input__label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 14px;
+        text-transform: uppercase;
+        font-size: 13px;
+        height: 18px;
+        line-height: 22px;
+      }
+    </style>
+    <style type="text/css">
+      .vc-checkerboard {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-size: contain;
+      }
+    </style>
+    <style type="text/css">
+      .vc-alpha,
+      .vc-alpha-checkboard-wrap {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      .vc-alpha-checkboard-wrap {
+        overflow: hidden;
+      }
+
+      .vc-alpha-gradient {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      .vc-alpha-container {
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+        height: 100%;
+        margin: 0 3px;
+      }
+
+      .vc-alpha-pointer {
+        z-index: 2;
+        position: absolute;
+      }
+
+      .vc-alpha-picker {
+        cursor: pointer;
+        width: 4px;
+        border-radius: 1px;
+        height: 8px;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+        background: #fff;
+        margin-top: 1px;
+        transform: translateX(-2px);
+      }
+    </style>
+    <style type="text/css">
+      .vc-sketch {
+        position: relative;
+        width: 200px;
+        padding: 10px 10px 0;
+        box-sizing: initial;
+        background: #fff;
+        border-radius: 4px;
+        box-shadow:
+          0 0 0 1px rgba(0, 0, 0, 0.15),
+          0 8px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .vc-sketch-saturation-wrap {
+        width: 100%;
+        padding-bottom: 75%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .vc-sketch-controls {
+        display: flex;
+      }
+
+      .vc-sketch-sliders {
+        padding: 4px 0;
+        flex: 1;
+      }
+
+      .vc-sketch-sliders .vc-alpha-gradient,
+      .vc-sketch-sliders .vc-hue {
+        border-radius: 2px;
+      }
+
+      .vc-sketch-alpha-wrap,
+      .vc-sketch-hue-wrap {
+        position: relative;
+        height: 10px;
+      }
+
+      .vc-sketch-alpha-wrap {
+        margin-top: 4px;
+        overflow: hidden;
+      }
+
+      .vc-sketch-color-wrap {
+        width: 24px;
+        height: 24px;
+        position: relative;
+        margin-top: 4px;
+        margin-left: 4px;
+        border-radius: 3px;
+      }
+
+      .vc-sketch-active-color {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 2px;
+        box-shadow:
+          inset 0 0 0 1px rgba(0, 0, 0, 0.15),
+          inset 0 0 4px rgba(0, 0, 0, 0.25);
+        z-index: 2;
+      }
+
+      .vc-sketch-color-wrap .vc-checkerboard {
+        background-size: auto;
+      }
+
+      .vc-sketch-field {
+        display: flex;
+        padding-top: 4px;
+      }
+
+      .vc-sketch-field .vc-input__input {
+        width: 90%;
+        padding: 4px 0 3px 10%;
+        border: none;
+        box-shadow: inset 0 0 0 1px #ccc;
+        font-size: 10px;
+      }
+
+      .vc-sketch-field .vc-input__label {
+        display: block;
+        text-align: center;
+        font-size: 11px;
+        color: #222;
+        padding-top: 3px;
+        padding-bottom: 4px;
+        text-transform: capitalize;
+      }
+
+      .vc-sketch-field--single {
+        flex: 1;
+        padding-left: 6px;
+      }
+
+      .vc-sketch-field--double {
+        flex: 2;
+      }
+
+      .vc-sketch-presets {
+        margin-right: -10px;
+        margin-left: -10px;
+        padding-left: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #eee;
+      }
+
+      .vc-sketch-presets-color {
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        margin: 0 10px 10px 0;
+        vertical-align: top;
+        cursor: pointer;
+        width: 16px;
+        height: 16px;
+      }
+
+      .vc-sketch-presets-color,
+      .vc-sketch-presets-color .vc-checkerboard {
+        border-radius: 3px;
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+      }
+
+      .vc-sketch__disable-alpha .vc-sketch-color-wrap {
+        height: 10px;
+      }
+    </style>
+    <style type="text/css">
+      .vc-chrome {
+        background: #fff;
+        border-radius: 2px;
+        box-shadow:
+          0 0 2px rgba(0, 0, 0, 0.3),
+          0 4px 8px rgba(0, 0, 0, 0.3);
+        box-sizing: initial;
+        width: 225px;
+        font-family: Menlo;
+        background-color: #fff;
+      }
+
+      .vc-chrome-controls {
+        display: flex;
+      }
+
+      .vc-chrome-color-wrap {
+        position: relative;
+        width: 36px;
+      }
+
+      .vc-chrome-active-color {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .vc-chrome-color-wrap .vc-checkerboard {
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        background-size: auto;
+      }
+
+      .vc-chrome-sliders {
+        flex: 1;
+      }
+
+      .vc-chrome-fields-wrap {
+        display: flex;
+        padding-top: 16px;
+      }
+
+      .vc-chrome-fields {
+        display: flex;
+        margin-left: -6px;
+        flex: 1;
+      }
+
+      .vc-chrome-field {
+        padding-left: 6px;
+        width: 100%;
+      }
+
+      .vc-chrome-toggle-btn {
+        width: 32px;
+        text-align: right;
+        position: relative;
+      }
+
+      .vc-chrome-toggle-icon {
+        margin-right: -4px;
+        margin-top: 12px;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+      }
+
+      .vc-chrome-toggle-icon-highlight {
+        position: absolute;
+        width: 24px;
+        height: 28px;
+        background: #eee;
+        border-radius: 4px;
+        top: 10px;
+        left: 12px;
+      }
+
+      .vc-chrome-hue-wrap {
+        margin-bottom: 8px;
+      }
+
+      .vc-chrome-alpha-wrap,
+      .vc-chrome-hue-wrap {
+        position: relative;
+        height: 10px;
+      }
+
+      .vc-chrome-alpha-wrap .vc-alpha-gradient,
+      .vc-chrome-hue-wrap .vc-hue {
+        border-radius: 2px;
+      }
+
+      .vc-chrome-alpha-wrap .vc-alpha-picker,
+      .vc-chrome-hue-wrap .vc-hue-picker {
+        width: 12px;
+        height: 12px;
+        border-radius: 6px;
+        transform: translate(-6px, -2px);
+        background-color: #f8f8f8;
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+      }
+
+      .vc-chrome-body {
+        padding: 16px 16px 12px;
+        background-color: #fff;
+      }
+
+      .vc-chrome-saturation-wrap {
+        width: 100%;
+        padding-bottom: 55%;
+        position: relative;
+        border-radius: 2px 2px 0 0;
+        overflow: hidden;
+      }
+
+      .vc-chrome-saturation-wrap .vc-saturation-circle {
+        width: 12px;
+        height: 12px;
+      }
+
+      .vc-chrome-fields .vc-input__input {
+        font-size: 11px;
+        color: #333;
+        width: 100%;
+        border-radius: 2px;
+        border: none;
+        box-shadow: inset 0 0 0 1px #dadada;
+        height: 21px;
+        text-align: center;
+      }
+
+      .vc-chrome-fields .vc-input__label {
+        text-transform: uppercase;
+        font-size: 11px;
+        line-height: 11px;
+        color: #969696;
+        text-align: center;
+        display: block;
+        margin-top: 12px;
+      }
+
+      .vc-chrome__disable-alpha .vc-chrome-active-color {
+        width: 18px;
+        height: 18px;
+      }
+
+      .vc-chrome__disable-alpha .vc-chrome-color-wrap {
+        width: 30px;
+      }
+
+      .vc-chrome__disable-alpha .vc-chrome-hue-wrap {
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+    </style>
+    <style type="text/css">
+      .vc-twitter {
+        background: #fff;
+        border: 0 solid rgba(0, 0, 0, 0.25);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+        position: relative;
+      }
+
+      .vc-twitter-triangle {
+        border-color: transparent transparent #fff transparent;
+      }
+
+      .vc-twitter-triangle,
+      .vc-twitter-triangle-shadow {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 9px 10px 9px;
+        position: absolute;
+      }
+
+      .vc-twitter-triangle-shadow {
+        border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+      }
+
+      .vc-twitter-body {
+        padding: 15px 9px 9px 15px;
+      }
+
+      .vc-twitter .vc-editable-input {
+        position: relative;
+      }
+
+      .vc-twitter .vc-editable-input input {
+        width: 100px;
+        font-size: 14px;
+        color: #666;
+        border: 0;
+        outline: none;
+        height: 28px;
+        box-shadow: inset 0 0 0 1px #f0f0f0;
+        box-sizing: content-box;
+        border-radius: 0 4px 4px 0;
+        float: left;
+        padding: 1px;
+        padding-left: 8px;
+      }
+
+      .vc-twitter .vc-editable-input span {
+        display: none;
+      }
+
+      .vc-twitter-hash {
+        background: #f0f0f0;
+        height: 30px;
+        width: 30px;
+        border-radius: 4px 0 0 4px;
+        float: left;
+        color: #98a1a4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .vc-twitter-swatch {
+        width: 30px;
+        height: 30px;
+        float: left;
+        border-radius: 4px;
+        margin: 0 6px 6px 0;
+        cursor: pointer;
+        position: relative;
+        outline: none;
+      }
+
+      .vc-twitter-clear {
+        clear: both;
+      }
+
+      .vc-twitter-hide-triangle .vc-twitter-triangle,
+      .vc-twitter-hide-triangle .vc-twitter-triangle-shadow {
+        display: none;
+      }
+
+      .vc-twitter-top-left-triangle .vc-twitter-triangle {
+        top: -10px;
+        left: 12px;
+      }
+
+      .vc-twitter-top-left-triangle .vc-twitter-triangle-shadow {
+        top: -11px;
+        left: 12px;
+      }
+
+      .vc-twitter-top-right-triangle .vc-twitter-triangle {
+        top: -10px;
+        right: 12px;
+      }
+
+      .vc-twitter-top-right-triangle .vc-twitter-triangle-shadow {
+        top: -11px;
+        right: 12px;
+      }
+    </style>
+    <script type="text/javascript">
+      pkp.documentTypeIcons = {
+        default: "DefaultDocument",
+        audio: "FileAudio",
+        epub: "FileEpub",
+        excel: "FileExcel",
+        html: "FileHtml",
+        image: "FileImage",
+        pdf: "FilePdf",
+        word: "FileDoc",
+        video: "FileVideo",
+        zip: "FileZip",
+        url: "Url",
+      };
+    </script>
+    <style type="text/css">
+      /* Prevent flash of unstyled content in some browsers */
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+    <style type="text/css" data-primevue-style-id="base">
+      .p-hidden-accessible {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        opacity: 0;
+        overflow: hidden;
+        padding: 0;
+        pointer-events: none;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
+
+      .p-overflow-hidden {
+        overflow: hidden;
+        padding-right: var(--p-scrollbar-width);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      id="mce-u0"
+      href="https://localhost:8443/lib/pkp/styles/tinymce/skin.min.css"
+    />
+  </head>
+
+  <body class="pkp_page_submission pkp_op_index" dir="ltr">
+    <script type="text/javascript">
+      // Initialise JS handler.
+      $(function () {
+        $("body").pkpHandler("$.pkp.controllers.SiteHandler", {
+          fetchNotificationUrl:
+            "https:\/\/localhost:8443\/index.php\/JOP\/notification\/fetchNotification",
+          hasSystemNotifications: false,
+        });
+      });
+    </script>
+    <div id="app" class="app" data-v-app="">
+      <!---->
+      <div
+        data-v-6a5b1d5f=""
+        id="announcer"
+        class="announcer sr-only"
+        aria-atomic="true"
+        aria-live="polite"
+      ></div>
+      <div id="announcer" class="announcer sr-only" aria-live=""></div>
+      <!---->
+      <!---->
+      <header class="app__header" role="banner">
+        <a
+          class="app__contextTitle"
+          href="https://localhost:8443/index.php/JOP/index"
+        >
+          Journal of Philosophy
+        </a>
+        <div class="ms-auto flex h-full whitespace-nowrap">
+          <div>
+            <a
+              href="https://docs.pkp.sfu.ca/learning-ojs/"
+              target="_blank"
+              class="relative bg-transparent leading-8 outline-none !text-on-dark hover:-translate-y-1 hover:text-on-dark hover:shadow-[0_0.25rem_#fff] focus:-translate-y-1 focus:text-on-dark focus:shadow-[0_0.25rem_#fff] flex h-full items-center p-2"
+              ><span class="inline-block align-middle rtl:scale-x-[-1] h-7 w-7"
+                ><svg
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_757_38)">
+                    <path
+                      d="M18.4444 8.88894C20.4081 8.88894 22 7.29707 22 5.33339C22 3.36971 20.4081 1.77783 18.4444 1.77783C16.4808 1.77783 14.8889 3.36971 14.8889 5.33339C14.8889 7.29707 16.4808 8.88894 18.4444 8.88894Z"
+                      fill="currentColor"
+                    ></path>
+                    <path
+                      d="M22.08 23.3156C21.9818 23.2495 21.8713 23.2037 21.7552 23.1809C21.639 23.1581 21.5195 23.1587 21.4035 23.1827C21.2876 23.2067 21.1777 23.2537 21.0801 23.3208C20.9826 23.3878 20.8994 23.4737 20.8355 23.5734C19.9762 24.846 18.9236 25.9766 17.7155 26.9245C17.4222 27.1467 16.3289 27.9912 15.8667 27.8134C15.5467 27.7156 15.7333 27.0845 15.7955 26.8178L16.2667 25.4223C16.4622 24.8534 19.8667 14.7556 20.24 13.6001C20.7911 11.9112 20.5511 10.2489 18.0355 10.6489C17.3511 10.7201 10.4089 11.6178 10.2844 11.6267C10.1677 11.6343 10.0536 11.6648 9.94867 11.7165C9.84373 11.7682 9.74999 11.84 9.67282 11.9279C9.59564 12.0158 9.53654 12.1181 9.49887 12.2288C9.46121 12.3396 9.44573 12.4567 9.45332 12.5734C9.46091 12.6901 9.49142 12.8042 9.5431 12.9091C9.59478 13.0141 9.66662 13.1078 9.75453 13.185C9.84243 13.2622 9.94468 13.3213 10.0554 13.3589C10.1662 13.3966 10.2833 13.4121 10.4 13.4045C10.4 13.4045 13.0667 13.0578 13.36 13.0312C13.5102 13.0165 13.6615 13.0456 13.7956 13.115C13.9297 13.1844 14.0408 13.2911 14.1155 13.4223C14.2766 13.9202 14.2545 14.4592 14.0533 14.9423C13.8222 15.8312 10.1689 26.1245 10.0533 26.72C9.92938 27.2184 9.96379 27.743 10.1518 28.2209C10.3398 28.6989 10.672 29.1063 11.1022 29.3867C11.9098 29.925 12.8713 30.1841 13.84 30.1245C14.7818 30.113 15.7133 29.9261 16.5867 29.5734C18.8 28.6845 21.1111 26.3201 22.3289 24.4623C22.4337 24.2735 22.4663 24.0531 22.4205 23.842C22.3747 23.631 22.2537 23.4439 22.08 23.3156Z"
+                      fill="currentColor"
+                    ></path>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_757_38">
+                      <rect width="32" height="32" fill="white"></rect>
+                    </clipPath>
+                  </defs></svg
+              ></span>
+              <span class="-screenReader">##common.help##</span></a
+            >
+          </div>
+          <div>
+            <button
+              class="relative bg-transparent leading-8 outline-none !text-on-dark hover:-translate-y-1 hover:text-on-dark hover:shadow-[0_0.25rem_#fff] focus:-translate-y-1 focus:text-on-dark focus:shadow-[0_0.25rem_#fff] border-none p-2"
+            >
+              <span class="inline-block align-middle rtl:scale-x-[-1] h-7 w-7"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M21.5303 14.4697L19.5 12.4395V9.75C19.4977 7.89138 18.8063 6.09964 17.5595 4.72124C16.3127 3.34284 14.5991 2.4757 12.75 2.2875V0.75H11.25V2.2875C9.40093 2.4757 7.68732 3.34284 6.44053 4.72124C5.19373 6.09964 4.50233 7.89138 4.5 9.75V12.4395L2.46975 14.4697C2.32909 14.6104 2.25004 14.8011 2.25 15V17.25C2.25 17.4489 2.32902 17.6397 2.46967 17.7803C2.61032 17.921 2.80109 18 3 18H8.25V18.5828C8.23369 19.5342 8.56905 20.4583 9.19184 21.1778C9.81462 21.8973 10.681 22.3617 11.625 22.482C12.1464 22.5337 12.6728 22.4757 13.1704 22.3117C13.6681 22.1478 14.1259 21.8815 14.5144 21.53C14.9029 21.1785 15.2136 20.7495 15.4264 20.2707C15.6392 19.792 15.7494 19.2739 15.75 18.75V18H21C21.1989 18 21.3897 17.921 21.5303 17.7803C21.671 17.6397 21.75 17.4489 21.75 17.25V15C21.75 14.8011 21.6709 14.6104 21.5303 14.4697ZM14.25 18.75C14.25 19.3467 14.0129 19.919 13.591 20.341C13.169 20.7629 12.5967 21 12 21C11.4033 21 10.831 20.7629 10.409 20.341C9.98705 19.919 9.75 19.3467 9.75 18.75V18H14.25V18.75ZM20.25 16.5H3.75V15.3105L5.78025 13.2803C5.92091 13.1396 5.99996 12.9489 6 12.75V9.75C6 8.1587 6.63214 6.63258 7.75736 5.50736C8.88258 4.38214 10.4087 3.75 12 3.75C13.5913 3.75 15.1174 4.38214 16.2426 5.50736C17.3679 6.63258 18 8.1587 18 9.75V12.75C18 12.9489 18.0791 13.1396 18.2197 13.2803L20.25 15.3105V16.5Z"
+                    fill="currentColor"
+                  ></path></svg
+              ></span>
+              <span class="-screenReader">Tasks</span>
+              <span
+                class="absolute right-3 top-2 rounded-[2px] bg-negative p-[2px] text-lg-normal leading-none text-on-dark shadow"
+                >1</span
+              >
+            </button>
+          </div>
+          <div>
+            <div
+              class="pkpDropdown app-user-nav flex h-full"
+              data-cy="app-user-nav"
+            >
+              <button
+                class="pkpButton inline-flex relative items-center gap-x-1 text-lg-semibold text-primary border-light hover:text-hover disabled:text-disabled bg-secondary py-[0.4375rem] px-3 border rounded"
+                type="button"
+                href="false"
+                aria-describedby=""
+                aria-controls="v-0"
+                aria-expanded="false"
+              >
+                <!---->
+                <div
+                  class="inline-flex items-center justify-center align-middle rounded-full p-1 cursor-pointer h-8 w-8 text-3xl-medium bg-secondary text-primary"
+                >
+                  <span>AS</span>
+                </div>
+                <span class="-screenReader">admin</span>
+                <!---->
+                <span class="-screenReader">admin</span>
+              </button>
+              <!---->
+              <!---->
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="app__body">
+        <nav
+          class="sticky top-12 flex h-[calc(100vh-3rem)] flex-none"
+          aria-label="Site Navigation"
+        >
+          <div
+            data-v-255898bc=""
+            id="pv_id_1"
+            class="overflow-y-auto border-e border-s border-light bg-secondary w-[21rem]"
+            data-pc-name="panelmenu"
+            pc1=""
+            data-pc-section="root"
+          >
+            <div class="" data-pc-section="panel">
+              <div
+                id="pv_id_1_0_header"
+                class="focus-visible:outline-none focus-visible:bg-hover"
+                tabindex="0"
+                role="button"
+                aria-label="Editor Dashboard"
+                aria-controls="pv_id_1_0_content"
+                data-pc-section="header"
+              >
+                <div
+                  class="transition duration-200 ease-in-out transition-shadow duration-200"
+                  data-pc-section="headercontent"
+                >
+                  <a
+                    data-v-255898bc=""
+                    class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant border-b border-b-light border-t border-t-light !text-lg-bold"
+                    href="#"
+                    tabindex="-1"
+                    ><!---->
+                    <span
+                      data-v-255898bc=""
+                      class="inline-block align-middle rtl:scale-x-[-1] h-5 w-5"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M5.615 20C5.16833 20 4.78733 19.8427 4.472 19.528C4.15733 19.2133 4 18.8323 4 18.385V5.615C4 5.16833 4.15733 4.78733 4.472 4.472C4.78667 4.15733 5.16767 4 5.615 4H18.385C18.8317 4 19.2127 4.15733 19.528 4.472C19.8427 4.78667 20 5.16767 20 5.615V18.385C20 18.8317 19.8427 19.2127 19.528 19.528C19.2133 19.8427 18.8323 20 18.385 20H5.615ZM10.5 19V12.5H5V18.385C5 18.5643 5.05767 18.7117 5.173 18.827C5.28833 18.9423 5.43567 19 5.615 19H10.5ZM11.5 19H18.385C18.5643 19 18.7117 18.9423 18.827 18.827C18.9423 18.7117 19 18.5643 19 18.385V12.5H11.5V19ZM5 11.5H19V5.615C19 5.43567 18.9423 5.28833 18.827 5.173C18.7117 5.05767 18.5643 5 18.385 5H5.615C5.43567 5 5.28833 5.05767 5.173 5.173C5.05767 5.28833 5 5.43567 5 5.615V11.5Z"
+                          fill="currentColor"
+                        ></path></svg
+                    ></span>
+                    <span data-v-255898bc="">Editor Dashboard</span>
+                    <span
+                      data-v-255898bc=""
+                      class="inline-block align-middle rtl:scale-x-[-1] h-4 w-4 flex-shrink-0 ltr:ml-auto rtl:mr-auto"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3 8L12 17L21 8H3Z"
+                          fill="currentColor"
+                        ></path></svg></span
+                  ></a>
+                </div>
+              </div>
+              <div
+                id="pv_id_1_0_content"
+                role="region"
+                aria-labelledby="pv_id_1_0_header"
+                data-pc-section="contentcontainer"
+                style="display: none"
+              >
+                <div data-pc-section="content">
+                  <ul
+                    class="focus-visible:outline-none"
+                    tabindex="-1"
+                    id="pv_id_1_0_list"
+                    role="tree"
+                    data-pc-section="rootlist"
+                  >
+                    <li
+                      id="pv_id_1_0_0"
+                      class=""
+                      role="treeitem"
+                      aria-label="Assigned to me"
+                      aria-level="1"
+                      aria-setsize="16"
+                      aria-posinset="1"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/dashboard/editorial?currentViewId=assigned-to-me"
+                          ><span
+                            data-v-255898bc=""
+                            class="inline-block rounded-[1.2em] border text-base-normal py-1 px-3 border-primary text-primary bg-secondary me-1"
+                            slot="0"
+                          >
+                            <div class="flex items-center justify-center">
+                              <!---->
+                              0
+                              <!---->
+                            </div>
+                          </span>
+                          <!---->
+                          <span data-v-255898bc="">Assigned to me</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_0_1"
+                      class=""
+                      role="treeitem"
+                      aria-label="Active submissions"
+                      aria-level="1"
+                      aria-setsize="16"
+                      aria-posinset="2"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/dashboard/editorial?currentViewId=active"
+                          ><span
+                            data-v-255898bc=""
+                            class="inline-block rounded-[1.2em] border text-base-normal py-1 px-3 border-primary text-primary bg-secondary me-1"
+                            slot="1"
+                          >
+                            <div class="flex items-center justify-center">
+                              <!---->
+                              1
+                              <!---->
+                            </div>
+                          </span>
+                          <!---->
+                          <span data-v-255898bc="">Active submissions</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_0_2"
+                      class=""
+                      role="treeitem"
+                      aria-label="Needs editor"
+                      aria-level="1"
+                      aria-setsize="16"
+                      aria-posinset="3"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/dashboard/editorial?currentViewId=needs-editor"
+                          ><span
+                            data-v-255898bc=""
+                            class="inline-block rounded-[1.2em] border text-base-normal py-1 px-3 border-primary text-primary bg-secondary me-1"
+                            slot="1"
+                          >
+                            <div class="flex items-center justify-center">
+                              <!---->
+                              1
+                              <!---->
+                            </div>
+                          </span>
+                          <!---->
+                          <span data-v-255898bc="">Needs editor</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_0_3"
+                      class=""
+                      role="treeitem"
+                      aria-label="All in submission stage"
+                      aria-level="1"
+                      aria-setsize="16"
+                      aria-posinset="4"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/dashboard/editorial?currentViewId=initial-review"
+                          ><span
+                            data-v-255898bc=""
+                            class="inline-block rounded-[1.2em] border text-base-normal py-1 px-3 border-primary text-primary bg-secondary me-1"
+                            slot="1"
+                          >
+                            <div class="flex items-center justify-center">
+                              <!---->
+                              1
+                              <!---->
+                            </div>
+                          </span>
+                          <!---->
+                          <span data-v-255898bc=""
+                            >All in submission stage</span
+                          >
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_0_4"
+                      class=""
+                      role="treeitem"
+                      aria-label="Needs reviews"
+                      aria-level="1"
+                      aria-setsize="16"
+                      aria-posinset="5"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/dashboard/editorial?currentViewId=needs-reviews"
+                          ><span
+                            data-v-255898bc=""
+                            class="inline-block rounded-[1.2em] border text-base-normal py-1 px-3 border-primary text-primary bg-secondary me-1"
+                            slot="0"
+                          >
+                            <div class="flex items-center justify-center">
+                              <!---->
+                              0
+                              <!---->
+                            </div>
+                          </span>
+                          <!---->
+                          <span data-v-255898bc="">Needs reviews</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_0_5"
+                      class=""
+                      role="treeitem"
+                      aria-label="Awaiting reviews"
+                      aria-level="1"
+                      aria-setsize="16"
+                      aria-posinset="6"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/dashboard/editorial?currentViewId=awaiting-reviews"
+                          ><span
+                            data-v-255898bc=""
+                            class="inline-block rounded-[1.2em] border text-base-normal py-1 px-3 border-primary text-primary bg-secondary me-1"
+                            slot="0"
+                          >
+                            <div class="flex items-center justify-center">
+                              <!---->
+                              0
+                              <!---->
+                            </div>
+                          </span>
+                          <!---->
+                          <span data-v-255898bc="">Awaiting reviews</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_0_6"
+                      class=""
+                      role="treeitem"
+                      aria-label="Reviews submitted"
+                      aria-level="1"
+                      aria-setsize="16"
+                      aria-posinset="7"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/dashboard/editorial?currentViewId=reviews-submitted"
+                          ><span
+                            data-v-255898bc=""
+                            class="inline-block rounded-[1.2em] border text-base-normal py-1 px-3 border-primary text-primary bg-secondary me-1"
+                            slot="0"
+                          >
+                            <div class="flex items-center justify-center">
+                              <!---->
+                              0
+                              <!---->
+                            </div>
+                          </span>
+                          <!---->
+                          <span data-v-255898bc="">Reviews submitted</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_0_7"
+                      class=""
+                      role="treeitem"
+                      aria-label="Reviews overdue"
+                      aria-level="1"
+                      aria-setsize="16"
+                      aria-posinset="8"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/dashboard/editorial?currentViewId=reviews-overdue"
+                          ><span
+                            data-v-255898bc=""
+                            class="inline-block rounded-[1.2em] border text-base-normal py-1 px-3 bg-attention text-on-dark border-attention me-1"
+                            slot="0"
+                          >
+                            <div class="flex items-center justify-center">
+                              <!---->
+                              0
+                              <!---->
+                            </div>
+                          </span>
+                          <!---->
+                          <span data-v-255898bc="">Reviews overdue</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_0_8"
+                      class=""
+                      role="treeitem"
+                      aria-label="Author revisions submitted"
+                      aria-level="1"
+                      aria-setsize="16"
+                      aria-posinset="9"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/dashboard/editorial?currentViewId=revisions-submitted"
+                          ><span
+                            data-v-255898bc=""
+                            class="inline-block rounded-[1.2em] border text-base-normal py-1 px-3 border-primary text-primary bg-secondary me-1"
+                            slot="0"
+                          >
+                            <div class="flex items-center justify-center">
+                              <!---->
+                              0
+                              <!---->
+                            </div>
+                          </span>
+                          <!---->
+                          <span data-v-255898bc=""
+                            >Author revisions submitted</span
+                          >
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_0_9"
+                      class=""
+                      role="treeitem"
+                      aria-label="All in review stage"
+                      aria-level="1"
+                      aria-setsize="16"
+                      aria-posinset="10"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/dashboard/editorial?currentViewId=external-review"
+                          ><span
+                            data-v-255898bc=""
+                            class="inline-block rounded-[1.2em] border text-base-normal py-1 px-3 border-primary text-primary bg-secondary me-1"
+                            slot="0"
+                          >
+                            <div class="flex items-center justify-center">
+                              <!---->
+                              0
+                              <!---->
+                            </div>
+                          </span>
+                          <!---->
+                          <span data-v-255898bc="">All in review stage</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_0_10"
+                      class=""
+                      role="treeitem"
+                      aria-label="All in copyediting stage"
+                      aria-level="1"
+                      aria-setsize="16"
+                      aria-posinset="11"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/dashboard/editorial?currentViewId=copyediting"
+                          ><span
+                            data-v-255898bc=""
+                            class="inline-block rounded-[1.2em] border text-base-normal py-1 px-3 border-primary text-primary bg-secondary me-1"
+                            slot="0"
+                          >
+                            <div class="flex items-center justify-center">
+                              <!---->
+                              0
+                              <!---->
+                            </div>
+                          </span>
+                          <!---->
+                          <span data-v-255898bc=""
+                            >All in copyediting stage</span
+                          >
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_0_11"
+                      class=""
+                      role="treeitem"
+                      aria-label="All in production stage"
+                      aria-level="1"
+                      aria-setsize="16"
+                      aria-posinset="12"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/dashboard/editorial?currentViewId=production"
+                          ><span
+                            data-v-255898bc=""
+                            class="inline-block rounded-[1.2em] border text-base-normal py-1 px-3 border-primary text-primary bg-secondary me-1"
+                            slot="0"
+                          >
+                            <div class="flex items-center justify-center">
+                              <!---->
+                              0
+                              <!---->
+                            </div>
+                          </span>
+                          <!---->
+                          <span data-v-255898bc=""
+                            >All in production stage</span
+                          >
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_0_12"
+                      class=""
+                      role="treeitem"
+                      aria-label="Scheduled for publication"
+                      aria-level="1"
+                      aria-setsize="16"
+                      aria-posinset="13"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/dashboard/editorial?currentViewId=scheduled"
+                          ><span
+                            data-v-255898bc=""
+                            class="inline-block rounded-[1.2em] border text-base-normal py-1 px-3 border-primary text-primary bg-secondary me-1"
+                            slot="0"
+                          >
+                            <div class="flex items-center justify-center">
+                              <!---->
+                              0
+                              <!---->
+                            </div>
+                          </span>
+                          <!---->
+                          <span data-v-255898bc=""
+                            >Scheduled for publication</span
+                          >
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_0_13"
+                      class=""
+                      role="treeitem"
+                      aria-label="Published"
+                      aria-level="1"
+                      aria-setsize="16"
+                      aria-posinset="14"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/dashboard/editorial?currentViewId=published"
+                          ><span
+                            data-v-255898bc=""
+                            class="inline-block rounded-[1.2em] border text-base-normal py-1 px-3 border-primary text-primary bg-secondary me-1"
+                            slot="0"
+                          >
+                            <div class="flex items-center justify-center">
+                              <!---->
+                              0
+                              <!---->
+                            </div>
+                          </span>
+                          <!---->
+                          <span data-v-255898bc="">Published</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_0_14"
+                      class=""
+                      role="treeitem"
+                      aria-label="Declined"
+                      aria-level="1"
+                      aria-setsize="16"
+                      aria-posinset="15"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/dashboard/editorial?currentViewId=declined"
+                          ><span
+                            data-v-255898bc=""
+                            class="inline-block rounded-[1.2em] border text-base-normal py-1 px-3 border-primary text-primary bg-secondary me-1"
+                            slot="0"
+                          >
+                            <div class="flex items-center justify-center">
+                              <!---->
+                              0
+                              <!---->
+                            </div>
+                          </span>
+                          <!---->
+                          <span data-v-255898bc="">Declined</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_0_15"
+                      class=""
+                      role="treeitem"
+                      aria-label="Start A New Submission"
+                      aria-level="1"
+                      aria-setsize="16"
+                      aria-posinset="16"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/submission"
+                          ><!---->
+                          <!---->
+                          <span data-v-255898bc="">Start A New Submission</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="" data-pc-section="panel">
+              <div
+                id="pv_id_1_1_header"
+                class="focus-visible:outline-none focus-visible:bg-hover"
+                tabindex="0"
+                role="button"
+                aria-label="Issues"
+                aria-controls="pv_id_1_1_content"
+                data-pc-section="header"
+              >
+                <div
+                  class="transition duration-200 ease-in-out transition-shadow duration-200"
+                  data-pc-section="headercontent"
+                >
+                  <a
+                    data-v-255898bc=""
+                    class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant border-b border-b-light !text-lg-bold"
+                    href="https://localhost:8443/index.php/JOP/manageIssues"
+                    tabindex="-1"
+                    ><!---->
+                    <span
+                      data-v-255898bc=""
+                      class="inline-block align-middle rtl:scale-x-[-1] h-5 w-5"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M5.14282 8.18848H15.4285M6.26396 11.6605L7.40682 11.6399C7.68678 11.6345 7.95897 11.7321 8.17175 11.9141C8.38453 12.0961 8.52308 12.3499 8.56111 12.6273L8.57139 12.7816V13.9062C8.57145 14.2056 8.45402 14.493 8.24437 14.7067C8.03472 14.9204 7.74958 15.0434 7.45025 15.049L6.30739 15.0696C6.02744 15.075 5.75524 14.9774 5.54246 14.7954C5.32969 14.6134 5.19114 14.3596 5.15311 14.0822L5.14282 13.9268V12.8033C5.14277 12.504 5.26019 12.2165 5.46984 12.0028C5.6795 11.7891 5.96464 11.6662 6.26396 11.6605Z"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                        <path
+                          d="M10.8572 11.6174H15.4286M10.8572 15.046H15.4286M4.00007 4.74316H16.5715C17.1777 4.74316 17.7591 4.98398 18.1877 5.41263C18.6164 5.84129 18.8572 6.42267 18.8572 7.02888V18.4746H4.00007C3.39386 18.4746 2.81248 18.2338 2.38383 17.8051C1.95517 17.3765 1.71436 16.7951 1.71436 16.1889V7.03002C1.71436 6.42381 1.95517 5.84243 2.38383 5.41378C2.81248 4.98512 3.39386 4.74316 4.00007 4.74316Z"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                        <path
+                          d="M18.2859 18.4742C19.0437 18.4742 19.7704 18.1732 20.3062 17.6374C20.842 17.1015 21.143 16.3748 21.143 15.617V8.18848H18.8573"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path></svg
+                    ></span>
+                    <span data-v-255898bc="">Issues</span>
+                    <!----></a
+                  >
+                </div>
+              </div>
+              <div
+                id="pv_id_1_1_content"
+                role="region"
+                aria-labelledby="pv_id_1_1_header"
+                data-pc-section="contentcontainer"
+                style="display: none"
+              >
+                <!---->
+              </div>
+            </div>
+            <div class="" data-pc-section="panel">
+              <div
+                id="pv_id_1_2_header"
+                class="focus-visible:outline-none focus-visible:bg-hover"
+                tabindex="0"
+                role="button"
+                aria-label="DOIs"
+                aria-controls="pv_id_1_2_content"
+                data-pc-section="header"
+              >
+                <div
+                  class="transition duration-200 ease-in-out transition-shadow duration-200"
+                  data-pc-section="headercontent"
+                >
+                  <a
+                    data-v-255898bc=""
+                    class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant border-b border-b-light !text-lg-bold"
+                    href="https://localhost:8443/index.php/JOP/dois"
+                    tabindex="-1"
+                    ><!---->
+                    <span
+                      data-v-255898bc=""
+                      class="inline-block align-middle rtl:scale-x-[-1] h-5 w-5"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g clip-path="url(#clip0_3404_6064)">
+                          <path
+                            d="M5.41838 10.43C4.96247 10.43 4.54022 10.7616 4.24716 11.1058C4.00997 11.3849 3.89138 11.8152 3.89138 12.1734C3.89138 12.5315 4.02591 12.9299 4.26314 13.209C4.55152 13.5532 4.86211 13.7891 5.32266 13.7891C5.7367 13.7891 6.22913 13.6153 6.51281 13.3316C6.80114 13.0478 7.04105 12.5714 7.04105 12.1574C7.04105 11.7481 6.92873 11.258 6.64036 10.9742C6.35194 10.6858 5.82769 10.43 5.41838 10.43ZM13.6048 10.5425C13.1304 10.5425 12.7443 10.7291 12.4466 11.1021C12.2048 11.4014 12.0838 11.7425 12.0838 12.1252C12.0838 12.513 12.2048 12.8565 12.4466 13.1558C12.7442 13.5288 13.1304 13.7154 13.6049 13.7154C14.0281 13.7154 14.3863 13.563 14.6792 13.2587C14.9724 12.9495 15.1189 12.5719 15.1189 12.1253C15.1189 11.6836 14.97 11.3108 14.6723 11.0065C14.3793 10.6973 14.0234 10.5425 13.6048 10.5425ZM12 0.375C5.57972 0.375 0.375 5.57972 0.375 12C0.375 18.4203 5.57972 23.625 12 23.625C18.4203 23.625 23.625 18.4203 23.625 12C23.625 5.57972 18.4203 0.375 12 0.375ZM9.24253 15.5527H7.08938V14.6761C6.8707 14.9506 6.3563 15.2304 6.13312 15.3559C5.74242 15.5745 5.21184 15.7169 4.71408 15.7169C3.90933 15.7169 3.19298 15.4626 2.56509 14.9092C1.81617 14.2487 1.46433 13.2389 1.46433 12.1504C1.46433 11.0433 1.84805 10.1595 2.61558 9.49898C3.22491 8.97333 3.97008 8.55258 4.76086 8.55258C5.22127 8.55258 5.7893 8.59397 6.19392 8.7893C6.42652 8.90086 6.84286 9.16359 7.08942 9.41944V4.80216H9.24267V15.5527L9.24253 15.5527ZM16.612 14.5617C15.8957 15.3862 14.8933 15.7985 13.6048 15.7985C12.3117 15.7985 11.307 15.3862 10.5906 14.5618C9.99994 13.8845 9.70444 13.0527 9.70444 12.0664C9.70444 11.1781 10.0021 10.3905 10.5975 9.7035C11.3185 8.87414 12.3442 8.45944 13.6744 8.45944C14.8978 8.45944 15.8746 8.87405 16.605 9.7035C17.2004 10.3807 17.498 11.1879 17.498 12.1252C17.4982 13.0724 17.2028 13.8845 16.612 14.5618V14.5617ZM18.4293 5.22342C18.6805 4.97217 18.9852 4.84664 19.3433 4.84664C19.7015 4.84664 20.0062 4.97222 20.2574 5.22342C20.5085 5.46998 20.6341 5.77233 20.6341 6.13045C20.6341 6.49327 20.5085 6.80025 20.2574 7.05145C20.0108 7.29797 19.7061 7.4212 19.3433 7.4212C18.9851 7.4212 18.6804 7.29563 18.4293 7.04442C18.1828 6.79327 18.0595 6.48858 18.0595 6.13041C18.0594 5.77228 18.1828 5.46998 18.4293 5.22342ZM20.4876 15.5473H18.199V8.7113H20.4876V15.5473Z"
+                            fill="currentColor"
+                          ></path>
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_3404_6064">
+                            <rect width="24" height="24" fill="white"></rect>
+                          </clipPath>
+                        </defs></svg
+                    ></span>
+                    <span data-v-255898bc="">DOIs</span>
+                    <!----></a
+                  >
+                </div>
+              </div>
+              <div
+                id="pv_id_1_2_content"
+                role="region"
+                aria-labelledby="pv_id_1_2_header"
+                data-pc-section="contentcontainer"
+                style="display: none"
+              >
+                <!---->
+              </div>
+            </div>
+            <div class="" data-pc-section="panel">
+              <div
+                id="pv_id_1_3_header"
+                class="focus-visible:outline-none focus-visible:bg-hover"
+                tabindex="0"
+                role="button"
+                aria-label="Settings"
+                aria-controls="pv_id_1_3_content"
+                data-pc-section="header"
+              >
+                <div
+                  class="transition duration-200 ease-in-out transition-shadow duration-200"
+                  data-pc-section="headercontent"
+                >
+                  <a
+                    data-v-255898bc=""
+                    class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant border-b border-b-light !text-lg-bold"
+                    href="#"
+                    tabindex="-1"
+                    ><!---->
+                    <span
+                      data-v-255898bc=""
+                      class="inline-block align-middle rtl:scale-x-[-1] h-5 w-5"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g clip-path="url(#clip0_3404_6073)">
+                          <path
+                            d="M12.0666 7.33301C9.46657 7.33301 7.3999 9.39967 7.3999 11.9997C7.3999 14.5997 9.46657 16.6663 12.0666 16.6663C14.6666 16.6663 16.7332 14.5997 16.7332 11.9997C16.7332 9.39967 14.6666 7.33301 12.0666 7.33301ZM12.0666 15.333C10.1999 15.333 8.73324 13.8663 8.73324 11.9997C8.73324 10.133 10.1999 8.66634 12.0666 8.66634C13.9332 8.66634 15.3999 10.133 15.3999 11.9997C15.3999 13.8663 13.9332 15.333 12.0666 15.333Z"
+                            fill="currentColor"
+                          ></path>
+                          <path
+                            d="M21.8666 9.79967L19.9999 9.19967L19.5999 8.19967L20.5333 6.46634C20.7333 6.06634 20.6666 5.53301 20.3333 5.19967L18.7333 3.59967C18.3999 3.26634 17.8666 3.19967 17.4666 3.39967L15.7333 4.33301L14.7333 3.93301L14.1333 2.06634C13.9999 1.66634 13.5999 1.33301 13.1333 1.33301H10.8666C10.3999 1.33301 9.99992 1.66634 9.93325 2.13301L9.33325 3.99967C8.93325 4.06634 8.59992 4.19967 8.26659 4.39967L6.53325 3.46634C6.13325 3.26634 5.59992 3.33301 5.26659 3.66634L3.66659 5.26634C3.33325 5.59967 3.26659 6.13301 3.46659 6.53301L4.33325 8.19967C4.19992 8.53301 4.06659 8.93301 3.93325 9.26634L2.06659 9.86634C1.66659 9.99967 1.33325 10.3997 1.33325 10.8663V13.133C1.33325 13.5997 1.66659 13.9997 2.13325 14.133L3.99992 14.733L4.39992 15.733L3.46659 17.4663C3.26659 17.8663 3.33325 18.3997 3.66659 18.733L5.26659 20.333C5.59992 20.6663 6.13325 20.733 6.53325 20.533L8.26659 19.5997L9.26659 19.9997L9.86659 21.933C9.99992 22.333 10.3999 22.6663 10.8666 22.6663H13.1333C13.5999 22.6663 13.9999 22.333 14.1333 21.933L14.7333 19.9997L15.7333 19.5997L17.4666 20.533C17.8666 20.733 18.3999 20.6663 18.7333 20.333L20.3333 18.733C20.6666 18.3997 20.7333 17.8663 20.5333 17.4663L19.5999 15.733L19.9999 14.733L21.9333 14.133C22.3333 13.9997 22.6666 13.5997 22.6666 13.133V10.8663C22.6666 10.3997 22.3333 9.93301 21.8666 9.79967ZM21.3333 12.933L18.9333 13.6663L18.8666 13.9997L18.2666 15.3997L18.0666 15.733L19.2666 17.933L17.9333 19.2663L15.7333 18.0663L15.3999 18.2663C14.9333 18.533 14.4666 18.733 13.9999 18.8663L13.6666 18.933L12.9333 21.333H11.0666L10.3333 18.933L9.99992 18.8663L8.59992 18.2663L8.26659 18.0663L6.06659 19.2663L4.73325 17.933L5.93325 15.733L5.73325 15.3997C5.46659 14.933 5.26659 14.4663 5.13325 13.9997L5.06659 13.6663L2.66659 12.933V11.0663L4.93325 10.3997L5.06659 10.0663C5.19992 9.53301 5.39992 9.06634 5.66659 8.59967L5.86659 8.26634L4.73325 6.06634L6.06659 4.73301L8.19992 5.93301L8.53325 5.73301C8.99992 5.46634 9.46659 5.26634 9.99992 5.13301L10.3333 4.99967L11.0666 2.66634H12.9333L13.6666 4.99967L13.9999 5.13301C14.4666 5.26634 14.9333 5.46634 15.3999 5.73301L15.7333 5.93301L17.9333 4.73301L19.2666 6.06634L18.0666 8.26634L18.2666 8.59967C18.5333 9.06634 18.7333 9.53301 18.8666 9.99967L18.9333 10.333L21.3333 11.0663V12.933Z"
+                            fill="currentColor"
+                          ></path>
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_3404_6073">
+                            <rect width="24" height="24" fill="white"></rect>
+                          </clipPath>
+                        </defs></svg
+                    ></span>
+                    <span data-v-255898bc="">Settings</span>
+                    <span
+                      data-v-255898bc=""
+                      class="inline-block align-middle rtl:scale-x-[-1] h-4 w-4 flex-shrink-0 ltr:ml-auto rtl:mr-auto"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3 8L12 17L21 8H3Z"
+                          fill="currentColor"
+                        ></path></svg></span
+                  ></a>
+                </div>
+              </div>
+              <div
+                id="pv_id_1_3_content"
+                role="region"
+                aria-labelledby="pv_id_1_3_header"
+                data-pc-section="contentcontainer"
+                style="display: none"
+              >
+                <div data-pc-section="content">
+                  <ul
+                    class="focus-visible:outline-none"
+                    tabindex="-1"
+                    id="pv_id_1_3_list"
+                    role="tree"
+                    data-pc-section="rootlist"
+                  >
+                    <li
+                      id="pv_id_1_3_0"
+                      class=""
+                      role="treeitem"
+                      aria-label="Journal"
+                      aria-level="1"
+                      aria-setsize="5"
+                      aria-posinset="1"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/management/settings/context"
+                          ><!---->
+                          <!---->
+                          <span data-v-255898bc="">Journal</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_3_1"
+                      class=""
+                      role="treeitem"
+                      aria-label="Website"
+                      aria-level="1"
+                      aria-setsize="5"
+                      aria-posinset="2"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/management/settings/website"
+                          ><!---->
+                          <!---->
+                          <span data-v-255898bc="">Website</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_3_2"
+                      class=""
+                      role="treeitem"
+                      aria-label="Workflow"
+                      aria-level="1"
+                      aria-setsize="5"
+                      aria-posinset="3"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/management/settings/workflow"
+                          ><!---->
+                          <!---->
+                          <span data-v-255898bc="">Workflow</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_3_3"
+                      class=""
+                      role="treeitem"
+                      aria-label="Distribution"
+                      aria-level="1"
+                      aria-setsize="5"
+                      aria-posinset="4"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/management/settings/distribution"
+                          ><!---->
+                          <!---->
+                          <span data-v-255898bc="">Distribution</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_3_4"
+                      class=""
+                      role="treeitem"
+                      aria-label="Users &amp; Roles"
+                      aria-level="1"
+                      aria-setsize="5"
+                      aria-posinset="5"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/management/settings/access"
+                          ><!---->
+                          <!---->
+                          <span data-v-255898bc="">Users &amp; Roles</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="" data-pc-section="panel">
+              <div
+                id="pv_id_1_4_header"
+                class="focus-visible:outline-none focus-visible:bg-hover"
+                tabindex="0"
+                role="button"
+                aria-label="Statistics"
+                aria-controls="pv_id_1_4_content"
+                data-pc-section="header"
+              >
+                <div
+                  class="transition duration-200 ease-in-out transition-shadow duration-200"
+                  data-pc-section="headercontent"
+                >
+                  <a
+                    data-v-255898bc=""
+                    class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant border-b border-b-light !text-lg-bold"
+                    href="#"
+                    tabindex="-1"
+                    ><!---->
+                    <span
+                      data-v-255898bc=""
+                      class="inline-block align-middle rtl:scale-x-[-1] h-5 w-5"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3 1.5H1.5V21C1.5 21.3978 1.65804 21.7794 1.93934 22.0607C2.22064 22.342 2.60218 22.5 3 22.5H22.5V21H3V1.5Z"
+                          fill="currentColor"
+                        ></path>
+                        <path
+                          d="M22.5 6.75H17.25V8.25H19.9425L14.25 13.9425L11.0325 10.7175C10.9628 10.6472 10.8798 10.5914 10.7884 10.5533C10.697 10.5153 10.599 10.4957 10.5 10.4957C10.401 10.4957 10.303 10.5153 10.2116 10.5533C10.1202 10.5914 10.0372 10.6472 9.9675 10.7175L4.5 16.1925L5.5575 17.25L10.5 12.3075L13.7175 15.5325C13.7872 15.6028 13.8702 15.6586 13.9616 15.6967C14.053 15.7347 14.151 15.7543 14.25 15.7543C14.349 15.7543 14.447 15.7347 14.5384 15.6967C14.6298 15.6586 14.7128 15.6028 14.7825 15.5325L21 9.3075V12H22.5V6.75Z"
+                          fill="currentColor"
+                        ></path></svg
+                    ></span>
+                    <span data-v-255898bc="">Statistics</span>
+                    <span
+                      data-v-255898bc=""
+                      class="inline-block align-middle rtl:scale-x-[-1] h-4 w-4 flex-shrink-0 ltr:ml-auto rtl:mr-auto"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3 8L12 17L21 8H3Z"
+                          fill="currentColor"
+                        ></path></svg></span
+                  ></a>
+                </div>
+              </div>
+              <div
+                id="pv_id_1_4_content"
+                role="region"
+                aria-labelledby="pv_id_1_4_header"
+                data-pc-section="contentcontainer"
+                style="display: none"
+              >
+                <div data-pc-section="content">
+                  <ul
+                    class="focus-visible:outline-none"
+                    tabindex="-1"
+                    id="pv_id_1_4_list"
+                    role="tree"
+                    data-pc-section="rootlist"
+                  >
+                    <li
+                      id="pv_id_1_4_0"
+                      class=""
+                      role="treeitem"
+                      aria-label="Articles"
+                      aria-level="1"
+                      aria-setsize="7"
+                      aria-posinset="1"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/stats/publications/publications"
+                          ><!---->
+                          <!---->
+                          <span data-v-255898bc="">Articles</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_4_1"
+                      class=""
+                      role="treeitem"
+                      aria-label="Issues"
+                      aria-level="1"
+                      aria-setsize="7"
+                      aria-posinset="2"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/stats/issues/issues"
+                          ><!---->
+                          <!---->
+                          <span data-v-255898bc="">Issues</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_4_2"
+                      class=""
+                      role="treeitem"
+                      aria-label="Journal"
+                      aria-level="1"
+                      aria-setsize="7"
+                      aria-posinset="3"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/stats/context/context"
+                          ><!---->
+                          <!---->
+                          <span data-v-255898bc="">Journal</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_4_3"
+                      class=""
+                      role="treeitem"
+                      aria-label="Editorial Activity"
+                      aria-level="1"
+                      aria-setsize="7"
+                      aria-posinset="4"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/stats/editorial/editorial"
+                          ><!---->
+                          <!---->
+                          <span data-v-255898bc="">Editorial Activity</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_4_4"
+                      class=""
+                      role="treeitem"
+                      aria-label="Users"
+                      aria-level="1"
+                      aria-setsize="7"
+                      aria-posinset="5"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/stats/users/users"
+                          ><!---->
+                          <!---->
+                          <span data-v-255898bc="">Users</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_4_5"
+                      class=""
+                      role="treeitem"
+                      aria-label="Counter R5"
+                      aria-level="1"
+                      aria-setsize="7"
+                      aria-posinset="6"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/stats/counterR5/counterR5"
+                          ><!---->
+                          <!---->
+                          <span data-v-255898bc="">Counter R5</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                    <li
+                      id="pv_id_1_4_6"
+                      class=""
+                      role="treeitem"
+                      aria-label="Reports"
+                      aria-level="1"
+                      aria-setsize="7"
+                      aria-posinset="7"
+                      data-pc-section="item"
+                      data-p-focused="false"
+                    >
+                      <div
+                        class="transition-shadow duration-200"
+                        data-pc-section="itemcontent"
+                      >
+                        <a
+                          data-v-255898bc=""
+                          class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant !px-9 border-b border-b-light"
+                          tabindex="-1"
+                          isfocused="false"
+                          data-pc-section="itemlink"
+                          href="https://localhost:8443/index.php/JOP/stats/reports"
+                          ><!---->
+                          <!---->
+                          <span data-v-255898bc="">Reports</span>
+                          <!----></a
+                        >
+                      </div>
+                      <div
+                        data-pc-section="contentcontainer"
+                        style="display: none"
+                      >
+                        <!---->
+                      </div>
+                    </li>
+                    <!---->
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="" data-pc-section="panel">
+              <div
+                id="pv_id_1_5_header"
+                class="focus-visible:outline-none focus-visible:bg-hover"
+                tabindex="0"
+                role="button"
+                aria-label="Tools"
+                aria-controls="pv_id_1_5_content"
+                data-pc-section="header"
+              >
+                <div
+                  class="transition duration-200 ease-in-out transition-shadow duration-200"
+                  data-pc-section="headercontent"
+                >
+                  <a
+                    data-v-255898bc=""
+                    class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant border-b border-b-light !text-lg-bold"
+                    href="https://localhost:8443/index.php/JOP/management/tools"
+                    tabindex="-1"
+                    ><!---->
+                    <span
+                      data-v-255898bc=""
+                      class="inline-block align-middle rtl:scale-x-[-1] h-5 w-5"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g clip-path="url(#clip0_60_16)">
+                          <path
+                            d="M13.3333 9.33334H10.6667C10.4899 9.33334 10.3203 9.40357 10.1953 9.5286C10.0702 9.65362 10 9.82319 10 10V14C10 14.1768 10.0702 14.3464 10.1953 14.4714C10.3203 14.5964 10.4899 14.6667 10.6667 14.6667H13.3333C13.5101 14.6667 13.6797 14.5964 13.8047 14.4714C13.9298 14.3464 14 14.1768 14 14V10C14 9.82319 13.9298 9.65362 13.8047 9.5286C13.6797 9.40357 13.5101 9.33334 13.3333 9.33334ZM13.0667 13.7333H10.9333V10.2667H13.0667V13.7333Z"
+                            fill="currentColor"
+                          ></path>
+                          <path
+                            d="M22.4733 8.25333L19.7467 5.52666C19.6225 5.4035 19.4549 5.33407 19.28 5.33333H15.9467V4.03333C15.9557 3.68303 15.8265 3.34326 15.5869 3.0875C15.3474 2.83174 15.0168 2.68056 14.6667 2.66666H9.22667C9.05557 2.6734 8.88755 2.71439 8.73258 2.78723C8.5776 2.86006 8.43881 2.96325 8.32443 3.09068C8.21005 3.21812 8.1224 3.36721 8.06668 3.52913C8.01095 3.69104 7.98828 3.86249 8.00001 4.03333V5.33333H4.72001C4.63227 5.33282 4.54529 5.34964 4.46407 5.38282C4.38284 5.41599 4.30897 5.46488 4.24667 5.52666L1.52667 8.25333C1.46489 8.31562 1.416 8.3895 1.38283 8.47073C1.34965 8.55195 1.33283 8.63893 1.33334 8.72666V18.6667C1.33334 19.0203 1.47382 19.3594 1.72386 19.6095C1.97391 19.8595 2.31305 20 2.66667 20H21.3333C21.687 20 22.0261 19.8595 22.2761 19.6095C22.5262 19.3594 22.6667 19.0203 22.6667 18.6667V8.72C22.6659 8.5451 22.5965 8.3775 22.4733 8.25333ZM9.33334 4H14.6667V5.33333H9.33334V4ZM21.3333 11.3333H14.6667V12.62H21.3333V18.6667H2.66667V12.62H9.33334V11.3333H2.66667V9L5.00001 6.66666H19L21.3333 9V11.3333Z"
+                            fill="currentColor"
+                          ></path>
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_60_16">
+                            <rect width="24" height="24" fill="white"></rect>
+                          </clipPath>
+                        </defs></svg
+                    ></span>
+                    <span data-v-255898bc="">Tools</span>
+                    <!----></a
+                  >
+                </div>
+              </div>
+              <div
+                id="pv_id_1_5_content"
+                role="region"
+                aria-labelledby="pv_id_1_5_header"
+                data-pc-section="contentcontainer"
+                style="display: none"
+              >
+                <!---->
+              </div>
+            </div>
+            <div class="" data-pc-section="panel">
+              <div
+                id="pv_id_1_6_header"
+                class="focus-visible:outline-none focus-visible:bg-hover"
+                tabindex="0"
+                role="button"
+                aria-label="Administration"
+                aria-controls="pv_id_1_6_content"
+                data-pc-section="header"
+              >
+                <div
+                  class="transition duration-200 ease-in-out transition-shadow duration-200"
+                  data-pc-section="headercontent"
+                >
+                  <a
+                    data-v-255898bc=""
+                    class="inline-flex relative items-center gap-x-1 text-lg-medium py-2 px-3 w-full cursor-pointer text-primary hover:text-hover disabled:text-disabled hover:bg-hover hover:text-on-dark backgroundVariant border-b border-b-light !text-lg-bold"
+                    href="https://localhost:8443/index.php/index/admin"
+                    tabindex="-1"
+                    ><!---->
+                    <span
+                      data-v-255898bc=""
+                      class="inline-block align-middle rtl:scale-x-[-1] h-5 w-5"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M17 17C17.4167 17 17.771 16.8543 18.063 16.563C18.355 16.2717 18.5007 15.9173 18.5 15.5C18.4993 15.0827 18.3537 14.7287 18.063 14.438C17.7723 14.1473 17.418 14.0013 17 14C16.582 13.9987 16.228 14.1447 15.938 14.438C15.648 14.7313 15.502 15.0853 15.5 15.5C15.498 15.9147 15.644 16.269 15.938 16.563C16.232 16.857 16.586 17.0027 17 17ZM17 20C17.5167 20 17.9917 19.879 18.425 19.637C18.8583 19.395 19.2083 19.0743 19.475 18.675C19.1083 18.4583 18.7167 18.2917 18.3 18.175C17.8833 18.0583 17.45 18 17 18C16.55 18 16.1167 18.0583 15.7 18.175C15.2833 18.2917 14.8917 18.4583 14.525 18.675C14.7917 19.075 15.1417 19.396 15.575 19.638C16.0083 19.88 16.4833 20.0007 17 20ZM12 22C9.68333 21.4167 7.77067 20.0873 6.262 18.012C4.75333 15.9367 3.99933 13.6327 4 11.1V5L12 2L20 5V10.675C19.6833 10.5417 19.3583 10.4207 19.025 10.312C18.6917 10.2033 18.35 10.1247 18 10.076V6.4L12 4.15L6 6.4V11.1C6 11.8833 6.10433 12.6667 6.313 13.45C6.52167 14.2333 6.81333 14.9793 7.188 15.688C7.56267 16.3967 8.01667 17.0507 8.55 17.65C9.08333 18.2493 9.675 18.7493 10.325 19.15C10.5083 19.6833 10.75 20.1917 11.05 20.675C11.35 21.1583 11.6917 21.5917 12.075 21.975C12.0583 21.975 12.046 21.9793 12.038 21.988C12.03 21.9967 12.0173 22.0007 12 22ZM17 22C15.6167 22 14.4377 21.5123 13.463 20.537C12.4883 19.5617 12.0007 18.3827 12 17C11.9993 15.6173 12.487 14.4383 13.463 13.463C14.439 12.4877 15.618 12 17 12C18.382 12 19.5613 12.4877 20.538 13.463C21.5147 14.4383 22.002 15.6173 22 17C21.998 18.3827 21.5103 19.562 20.537 20.538C19.5637 21.514 18.3847 22.0013 17 22Z"
+                          fill="currentColor"
+                        ></path></svg
+                    ></span>
+                    <span data-v-255898bc="">Administration</span>
+                    <!----></a
+                  >
+                </div>
+              </div>
+              <div
+                id="pv_id_1_6_content"
+                role="region"
+                aria-labelledby="pv_id_1_6_header"
+                data-pc-section="contentcontainer"
+                style="display: none"
+              >
+                <!---->
+              </div>
+            </div>
+          </div>
+        </nav>
+        <main class="app__main">
+          <div class="app__page width width--narrow">
+            <h1
+              class="app__pageHeading app__pageHeading--center app__pageHeading--spacious"
+            >
+              Make a Submission
+            </h1>
+            <div class="panel panel--wide">
+              <div class="panelSection">
+                <!---->
+                <div class="panelSection__content">
+                  <form
+                    class="pkpForm -pkpClearfix startSubmissionPage__form"
+                    method="POST"
+                    action="https://localhost:8443/index.php/JOP/api/v1/submissions"
+                  >
+                    <input type="submit" value="i9884" style="display: none" />
+                    <input type="hidden" name="sectionId" value="1" />
+                    <!---->
+                    <!---->
+                    <div class="pkpFormPages">
+                      <div class="pkpFormPage pkpFormPage--current">
+                        <fieldset class="pkpFormGroup -pkpClearfix">
+                          <!---->
+                          <div class="pkpFormGroup__fields">
+                            <div class="pkpFormField pkpFormField--html">
+                              <div class="pkpFormField__heading">
+                                <span class="pkpFormFieldLabel align-middle"
+                                  >Before you begin</span
+                                >
+                                <!---->
+                                <!---->
+                                <!---->
+                              </div>
+                              <div
+                                class="pkpFormField__control pkpFormField__control--html semantic-defaults"
+                              >
+                                <p>
+                                  Thank you for submitting to the Journal of
+                                  Philosophy. You will be asked to upload files,
+                                  identify co-authors, and provide information
+                                  such as the title and abstract.
+                                </p>
+                                <p></p>
+                                <p>
+                                  Please read our
+                                  <a
+                                    target="_blank"
+                                    href="https://localhost:8443/index.php/JOP/about/submissions"
+                                    rel="noopener"
+                                    >Submission Guidelines</a
+                                  >
+                                  if you have not done so already. When filling
+                                  out the forms, provide as many details as
+                                  possible in order to help our editors evaluate
+                                  your work.
+                                </p>
+                                <p>
+                                  Once you begin, you can save your submission
+                                  and come back to it later. You will be able to
+                                  review and correct any information before you
+                                  submit.
+                                </p>
+                              </div>
+                            </div>
+                            <div
+                              class="pkpFormField pkpFormField--richTextarea"
+                            >
+                              <div class="pkpFormField__heading">
+                                <label
+                                  for="startSubmission-title-control"
+                                  class="pkpFormFieldLabel align-middle"
+                                  >Title
+                                  <span class="pkpFormFieldLabel__required"
+                                    ><span class="aria-hidden">*</span>
+                                    <span class="-screenReader"
+                                      >Required</span
+                                    ></span
+                                  ></label
+                                >
+                                <!---->
+                                <!---->
+                                <!---->
+                              </div>
+                              <!---->
+                              <div
+                                class="pkpFormField__control pkpFormField--richTextarea__control pkpFormField--richTextArea__control--oneline"
+                              >
+                                <textarea
+                                  id="startSubmission-title-control"
+                                  visibility="hidden"
+                                  class="pkpFormField__input pkpFormField--richTextarea__input"
+                                  style="display: none"
+                                  aria-hidden="true"
+                                ></textarea>
+                                <div
+                                  role="application"
+                                  class="tox tox-tinymce"
+                                  aria-disabled="false"
+                                  style="visibility: hidden; height: 400px"
+                                >
+                                  <div class="tox-editor-container">
+                                    <div
+                                      data-alloy-vertical-dir="toptobottom"
+                                      class="tox-editor-header"
+                                    >
+                                      <div
+                                        role="group"
+                                        class="tox-toolbar-overlord"
+                                        aria-disabled="false"
+                                      >
+                                        <div
+                                          role="group"
+                                          class="tox-toolbar__primary"
+                                        >
+                                          <div
+                                            aria-label=""
+                                            role="toolbar"
+                                            data-alloy-tabstop="true"
+                                            class="tox-toolbar__group"
+                                          >
+                                            <button
+                                              aria-label="Formatting"
+                                              data-mce-name="formatgroup"
+                                              aria-haspopup="true"
+                                              type="button"
+                                              tabindex="-1"
+                                              class="tox-tbtn"
+                                              aria-disabled="false"
+                                              aria-expanded="false"
+                                              style="width: 34px"
+                                            >
+                                              <span
+                                                class="tox-icon tox-tbtn__icon-wrap"
+                                                ><svg
+                                                  width="24"
+                                                  height="24"
+                                                  focusable="false"
+                                                >
+                                                  <g fill-rule="evenodd">
+                                                    <path
+                                                      class="tox-icon-text-color__color"
+                                                      d="M3 18h18v3H3z"
+                                                    ></path>
+                                                    <path
+                                                      d="M8.7 16h-.8a.5.5 0 0 1-.5-.6l2.7-9c.1-.3.3-.4.5-.4h2.8c.2 0 .4.1.5.4l2.7 9a.5.5 0 0 1-.5.6h-.8a.5.5 0 0 1-.4-.4l-.7-2.2c0-.3-.3-.4-.5-.4h-3.4c-.2 0-.4.1-.5.4l-.7 2.2c0 .3-.2.4-.4.4Zm2.6-7.6-.6 2a.5.5 0 0 0 .5.6h1.6a.5.5 0 0 0 .5-.6l-.6-2c0-.3-.3-.4-.5-.4h-.4c-.2 0-.4.1-.5.4Z"
+                                                    ></path>
+                                                  </g></svg
+                                              ></span>
+                                            </button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="tox-anchorbar"></div>
+                                    </div>
+                                    <div class="tox-sidebar-wrap">
+                                      <div class="tox-edit-area">
+                                        <iframe
+                                          id="startSubmission-title-control_ifr"
+                                          frameborder="0"
+                                          allowtransparency="true"
+                                          title="Rich Text Area"
+                                          class="tox-edit-area__iframe"
+                                          srcdoc='&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;&lt;/head&gt;&lt;body id="tinymce" class="mce-content-body " data-id="startSubmission-title-control" aria-label="Rich Text Area"&gt;&lt;br&gt;&lt;/body&gt;&lt;/html&gt;'
+                                        ></iframe>
+                                      </div>
+                                      <div
+                                        role="presentation"
+                                        class="tox-sidebar"
+                                      >
+                                        <div
+                                          data-alloy-tabstop="true"
+                                          tabindex="-1"
+                                          class="tox-sidebar__slider tox-sidebar--sliding-closed"
+                                          style="width: 0px"
+                                        >
+                                          <div
+                                            class="tox-sidebar__pane-container"
+                                          ></div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="tox-bottom-anchorbar"></div>
+                                  </div>
+                                  <div
+                                    aria-hidden="true"
+                                    class="tox-view-wrap"
+                                    style="display: none"
+                                  >
+                                    <div
+                                      class="tox-view-wrap__slot-container"
+                                    ></div>
+                                  </div>
+                                  <div
+                                    aria-hidden="true"
+                                    class="tox-throbber"
+                                    style="display: none"
+                                  ></div>
+                                </div>
+                                <!---->
+                              </div>
+                              <!---->
+                            </div>
+                            <fieldset
+                              class="pkpFormField pkpFormField--options"
+                            >
+                              <legend class="pkpFormField--options__legend">
+                                <span class="align-middle"
+                                  >Submission Checklist</span
+                                >
+                                <span class="pkpFormFieldLabel__required">
+                                  *
+                                  <span class="-screenReader"
+                                    >Required</span
+                                  ></span
+                                >
+                                <!---->
+                                <!---->
+                                <!---->
+                              </legend>
+                              <div
+                                id="startSubmission-submissionRequirements-description"
+                                class="pkpFormField__description pkpFormField--options__description semantic-defaults"
+                              >
+                                <p>
+                                  All submissions must meet the following
+                                  requirements.
+                                </p>
+                                <ul>
+                                  <li>
+                                    This submission meets the requirements
+                                    outlined in the
+                                    <a
+                                      href="https://localhost:8443/index.php/JOP/about/submissions"
+                                      >Author Guidelines</a
+                                    >.
+                                  </li>
+                                  <li>
+                                    This submission has not been previously
+                                    published, nor is it before another journal
+                                    for consideration.
+                                  </li>
+                                  <li>
+                                    All references have been checked for
+                                    accuracy and completeness.
+                                  </li>
+                                  <li>
+                                    All tables and figures have been numbered
+                                    and labeled.
+                                  </li>
+                                  <li>
+                                    Permission has been obtained to publish all
+                                    photos, datasets and other material provided
+                                    with this submission.
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="pkpFormField__control">
+                                <div
+                                  modelvalue="[object Object]"
+                                  disabled="true"
+                                >
+                                  <label class="pkpFormField--options__option"
+                                    ><input
+                                      class="pkpFormField--options__input"
+                                      type="checkbox"
+                                      name="submissionRequirements"
+                                      aria-describedby="startSubmission-submissionRequirements-description"
+                                      aria-invalid="0"
+                                      value="true"
+                                    />
+                                    <span
+                                      class="pkpFormField--options__optionLabel"
+                                      >Yes, my submission meets all of these
+                                      requirements.</span
+                                    >
+                                    <!----></label
+                                  >
+                                </div>
+                                <!---->
+                              </div>
+                              <!---->
+                            </fieldset>
+                            <fieldset
+                              class="pkpFormField pkpFormField--options"
+                            >
+                              <legend class="pkpFormField--options__legend">
+                                <span class="align-middle"
+                                  >Privacy Consent</span
+                                >
+                                <span class="pkpFormFieldLabel__required">
+                                  *
+                                  <span class="-screenReader"
+                                    >Required</span
+                                  ></span
+                                >
+                                <!---->
+                                <!---->
+                                <!---->
+                              </legend>
+                              <!---->
+                              <div class="pkpFormField__control">
+                                <div
+                                  modelvalue="[object Object]"
+                                  disabled="true"
+                                >
+                                  <label class="pkpFormField--options__option"
+                                    ><input
+                                      class="pkpFormField--options__input"
+                                      type="checkbox"
+                                      name="privacyConsent"
+                                      aria-invalid="0"
+                                      value="true"
+                                    />
+                                    <span
+                                      class="pkpFormField--options__optionLabel"
+                                      >Yes, I agree to have my data collected
+                                      and stored according to the
+                                      <a
+                                        target="_blank"
+                                        href="https://localhost:8443/index.php/JOP/about/privacy"
+                                        rel="noopener"
+                                        >privacy statement</a
+                                      >.</span
+                                    >
+                                    <!----></label
+                                  >
+                                </div>
+                                <!---->
+                              </div>
+                              <!---->
+                            </fieldset>
+                          </div>
+                        </fieldset>
+                        <div
+                          class="buttonRow pkpFormPage__footer"
+                          aria-live="polite"
+                        >
+                          <!---->
+                          <!---->
+                          <span
+                            role="status"
+                            aria-live="polite"
+                            aria-atomic="true"
+                            ><!----></span
+                          >
+                          <!---->
+                          <!---->
+                          <button
+                            class="pkpButton inline-flex relative items-center gap-x-1 text-lg-semibold bg-primary border-transparent text-on-dark hover:bg-hover hover:text-on-dark disabled:bg-disabled disabled:text-disabled py-[0.4375rem] px-3 border rounded"
+                            type="button"
+                            href="false"
+                            label="Begin Submission"
+                          >
+                            <!---->
+                            Begin Submission
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+      <div
+        aria-live="polite"
+        aria-atomic="true"
+        class="app__notifications"
+        role="status"
+      ></div>
+      <!---->
+    </div>
+
+    <script type="text/javascript">
+      pkp.registry.init("app", "StartSubmissionPage", {
+        menu: {
+          dashboards: {
+            name: "Editor Dashboard",
+            icon: "Dashboard",
+            submenu: {
+              "assigned-to-me": {
+                id: "assigned-to-me",
+                name: "Assigned to me",
+                isCurrent: false,
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/dashboard\/editorial?currentViewId=assigned-to-me",
+                badge: { slot: "-" },
+              },
+              active: {
+                id: "active",
+                name: "Active submissions",
+                isCurrent: false,
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/dashboard\/editorial?currentViewId=active",
+                badge: { slot: "-" },
+              },
+              "needs-editor": {
+                id: "needs-editor",
+                name: "Needs editor",
+                isCurrent: false,
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/dashboard\/editorial?currentViewId=needs-editor",
+                badge: { slot: "-" },
+              },
+              "initial-review": {
+                id: "initial-review",
+                name: "All in submission stage",
+                isCurrent: false,
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/dashboard\/editorial?currentViewId=initial-review",
+                badge: { slot: "-" },
+              },
+              "needs-reviews": {
+                id: "needs-reviews",
+                name: "Needs reviews",
+                isCurrent: false,
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/dashboard\/editorial?currentViewId=needs-reviews",
+                badge: { slot: "-" },
+              },
+              "awaiting-reviews": {
+                id: "awaiting-reviews",
+                name: "Awaiting reviews",
+                isCurrent: false,
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/dashboard\/editorial?currentViewId=awaiting-reviews",
+                badge: { slot: "-" },
+              },
+              "reviews-submitted": {
+                id: "reviews-submitted",
+                name: "Reviews submitted",
+                isCurrent: false,
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/dashboard\/editorial?currentViewId=reviews-submitted",
+                badge: { slot: "-" },
+              },
+              "reviews-overdue": {
+                id: "reviews-overdue",
+                name: "Reviews overdue",
+                isCurrent: false,
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/dashboard\/editorial?currentViewId=reviews-overdue",
+                badge: { slot: "-" },
+              },
+              "revisions-submitted": {
+                id: "revisions-submitted",
+                name: "Author revisions submitted",
+                isCurrent: false,
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/dashboard\/editorial?currentViewId=revisions-submitted",
+                badge: { slot: "-" },
+              },
+              "external-review": {
+                id: "external-review",
+                name: "All in review stage",
+                isCurrent: false,
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/dashboard\/editorial?currentViewId=external-review",
+                badge: { slot: "-" },
+              },
+              copyediting: {
+                id: "copyediting",
+                name: "All in copyediting stage",
+                isCurrent: false,
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/dashboard\/editorial?currentViewId=copyediting",
+                badge: { slot: "-" },
+              },
+              production: {
+                id: "production",
+                name: "All in production stage",
+                isCurrent: false,
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/dashboard\/editorial?currentViewId=production",
+                badge: { slot: "-" },
+              },
+              scheduled: {
+                id: "scheduled",
+                name: "Scheduled for publication",
+                isCurrent: false,
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/dashboard\/editorial?currentViewId=scheduled",
+                badge: { slot: "-" },
+              },
+              published: {
+                id: "published",
+                name: "Published",
+                isCurrent: false,
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/dashboard\/editorial?currentViewId=published",
+                badge: { slot: "-" },
+              },
+              declined: {
+                id: "declined",
+                name: "Declined",
+                isCurrent: false,
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/dashboard\/editorial?currentViewId=declined",
+                badge: { slot: "-" },
+              },
+              newSubmission: {
+                name: "Start A New Submission",
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/submission",
+              },
+            },
+          },
+          issues: {
+            name: "Issues",
+            url: "https:\/\/localhost:8443\/index.php\/JOP\/manageIssues",
+            isCurrent: false,
+            icon: "Issues",
+          },
+          dois: {
+            name: "DOIs",
+            url: "https:\/\/localhost:8443\/index.php\/JOP\/dois",
+            isCurrent: false,
+            icon: "NavDoi",
+          },
+          settings: {
+            name: "Settings",
+            icon: "Settings",
+            submenu: {
+              context: {
+                name: "Journal",
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/management\/settings\/context",
+                isCurrent: false,
+              },
+              website: {
+                name: "Website",
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/management\/settings\/website",
+                isCurrent: false,
+              },
+              workflow: {
+                name: "Workflow",
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/management\/settings\/workflow",
+                isCurrent: false,
+              },
+              distribution: {
+                name: "Distribution",
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/management\/settings\/distribution",
+                isCurrent: false,
+              },
+              access: {
+                name: "Users & Roles",
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/management\/settings\/access",
+                isCurrent: false,
+              },
+            },
+          },
+          statistics: {
+            name: "Statistics",
+            icon: "Statistics",
+            submenu: {
+              publications: {
+                name: "Articles",
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/stats\/publications\/publications",
+                isCurrent: false,
+              },
+              issues: {
+                name: "Issues",
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/stats\/issues\/issues",
+                isCurrent: false,
+              },
+              context: {
+                name: "Journal",
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/stats\/context\/context",
+                isCurrent: false,
+              },
+              editorial: {
+                name: "Editorial Activity",
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/stats\/editorial\/editorial",
+                isCurrent: false,
+              },
+              users: {
+                name: "Users",
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/stats\/users\/users",
+                isCurrent: false,
+              },
+              counterR5: {
+                name: "Counter R5",
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/stats\/counterR5\/counterR5",
+                isCurrent: false,
+              },
+              reports: {
+                name: "Reports",
+                url: "https:\/\/localhost:8443\/index.php\/JOP\/stats\/reports",
+                isCurrent: false,
+              },
+            },
+          },
+          tools: {
+            name: "Tools",
+            url: "https:\/\/localhost:8443\/index.php\/JOP\/management\/tools",
+            isCurrent: false,
+            icon: "Tools",
+          },
+          admin: {
+            name: "Administration",
+            url: "https:\/\/localhost:8443\/index.php\/index\/admin",
+            isCurrent: false,
+            icon: "NavAdmin",
+          },
+        },
+        tinyMCE: {
+          skinUrl: "https:\/\/localhost:8443\/lib\/pkp\/styles\/tinymce",
+        },
+        tasksUrl:
+          "https:\/\/localhost:8443\/index.php\/JOP\/$$$call$$$\/page\/page\/tasks",
+        unreadTasksCount: 1,
+        form: {
+          id: "startSubmission",
+          method: "POST",
+          action:
+            "https:\/\/localhost:8443\/index.php\/JOP\/api\/v1\/submissions",
+          fields: [
+            {
+              name: "introduction",
+              component: "field-html",
+              label: "Before you begin",
+              description:
+                '<p>Thank you for submitting to the Journal of Philosophy. You will be asked to upload files, identify co-authors, and provide information such as the title and abstract.<p><p>Please read our <a href="https:\/\/localhost:8443\/index.php\/JOP\/about\/submissions" target="_blank">Submission Guidelines<\/a> if you have not done so already. When filling out the forms, provide as many details as possible in order to help our editors evaluate your work.<\/p><p>Once you begin, you can save your submission and come back to it later. You will be able to review and correct any information before you submit.<\/p>',
+              groupId: "default",
+              isRequired: false,
+              isMultilingual: false,
+              isInert: true,
+              value: null,
+            },
+            {
+              name: "title",
+              component: "field-rich-text",
+              label: "Title",
+              groupId: "default",
+              isRequired: true,
+              isMultilingual: false,
+              isInert: false,
+              value: "",
+              i18nFormattingLabel: "Formatting",
+              toolbar: "formatgroup",
+              plugins: [],
+              size: "oneline",
+              validElements: "b,i,u,sup,sub",
+            },
+            {
+              name: "submissionRequirements",
+              component: "field-options",
+              label: "Submission Checklist",
+              description:
+                '<p>All submissions must meet the following requirements.<\/p><ul><li>This submission meets the requirements outlined in the <a href="https:\/\/localhost:8443\/index.php\/JOP\/about\/submissions">Author Guidelines<\/a>.<\/li><li>This submission has not been previously published, nor is it before another journal for consideration.<\/li><li>All references have been checked for accuracy and completeness.<\/li><li>All tables and figures have been numbered and labeled.<\/li><li>Permission has been obtained to publish all photos, datasets and other material provided with this submission.<\/li><\/ul>',
+              groupId: "default",
+              isRequired: true,
+              isMultilingual: false,
+              isInert: false,
+              value: false,
+              type: "checkbox",
+              isOrderable: false,
+              allowOnlySorting: false,
+              options: [
+                {
+                  value: true,
+                  label: "Yes, my submission meets all of these requirements.",
+                },
+              ],
+            },
+            {
+              name: "privacyConsent",
+              component: "field-options",
+              label: "Privacy Consent",
+              groupId: "default",
+              isRequired: true,
+              isMultilingual: false,
+              isInert: false,
+              value: false,
+              type: "checkbox",
+              isOrderable: false,
+              allowOnlySorting: false,
+              options: [
+                {
+                  value: true,
+                  label:
+                    'Yes, I agree to have my data collected and stored according to the <a href="https:\/\/localhost:8443\/index.php\/JOP\/about\/privacy" target="_blank">privacy statement<\/a>.',
+                },
+              ],
+            },
+          ],
+          groups: [{ id: "default", pageId: "default" }],
+          hiddenFields: { sectionId: 1 },
+          pages: [
+            {
+              id: "default",
+              submitButton: { label: "Begin Submission", isPrimary: true },
+            },
+          ],
+          primaryLocale: "en",
+          visibleLocales: ["en"],
+          supportedFormLocales: [],
+          errors: {},
+        },
+      });
+    </script>
+
+    <script type="text/javascript">
+      // Initialize JS handler
+      $(function () {
+        $("#pkpHelpPanel").pkpHandler("$.pkp.controllers.HelpPanelHandler", {
+          helpUrl: "https:\/\/localhost:8443\/index.php\/JOP\/help",
+          helpLocale: "en",
+        });
+      });
+    </script>
+    <div id="pkpHelpPanel" class="pkp_help_panel" tabindex="-1">
+      <div class="panel">
+        <div class="header">
+          <a href="#" class="pkpHomeHelpPanel home"> Table of Contents </a>
+          <a href="#" class="pkpCloseHelpPanel close"> Close </a>
+        </div>
+        <div class="content">
+          <div class="pkp_loading">
+            <span class="pkp_spinner"></span>
+            <span class="message">Loading</span>
+          </div>
+        </div>
+        <div class="footer">
+          <a href="#" class="pkpPreviousHelpPanel previous"> Previous </a>
+          <a href="#" class="pkpNextHelpPanel next"> Next </a>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="tox tox-silver-sink tox-tinymce-aux"
+      style="position: relative"
+    ></div>
+  </body>
+</html>

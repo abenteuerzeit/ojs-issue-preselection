@@ -3,55 +3,67 @@
 /**
  * @file plugins/generic/issuePreselection/IssuePreselectionPlugin.php
  *
- * Issue Preselection Plugin
- * Allows authors to select issue assignment during submission
+ * @class IssuePreselectionPlugin
+ *
+ * @brief Allows authors to select issue assignment during submission
  */
 
 namespace APP\plugins\generic\issuePreselection;
 
-use PKP\plugins\GenericPlugin;
-use PKP\plugins\Hook;
 use APP\plugins\generic\issuePreselection\classes\IssueManagement;
 use APP\plugins\generic\issuePreselection\classes\SubmissionManagement;
+use Exception;
+use PKP\plugins\GenericPlugin;
+use PKP\plugins\Hook;
 
 class IssuePreselectionPlugin extends GenericPlugin
 {
-    /** @var IssueManagement */
-    private $issueManagement;
 
-    /** @var SubmissionManagement */
-    private $submissionManagement;
-
-    public function register($category, $path, $mainContextId = null)
+    /**
+     * @param $category
+     * @param $path
+     * @param null $mainContextId
+     * @return bool
+     * @throws Exception
+     */
+    public function register($category, $path, $mainContextId = null): bool
     {
         $success = parent::register($category, $path, $mainContextId);
-                
-        if ($success && $this->getEnabled($mainContextId)) {
-            $this->issueManagement = new IssueManagement($this);
-            $this->submissionManagement = new SubmissionManagement($this);
 
-            Hook::add('Schema::get::issue', [$this->issueManagement, 'addToIssueSchema']);
-            Hook::add('Templates::Editor::Issues::IssueData::AdditionalMetadata', [$this->issueManagement, 'addIssueFormFields']);
-            Hook::add('issueform::readuservars', [$this->issueManagement, 'readIssueFormData']);
-            Hook::add('issueform::execute', [$this->issueManagement, 'saveIssueFormData']);
-            Hook::add('Issue::edit', [$this->issueManagement, 'beforeIssueEdit']);
-            
-            Hook::add('Schema::get::submission', [$this->submissionManagement, 'addToSubmissionSchema']);
-            Hook::add('Form::config::after', [$this->submissionManagement, 'addToSubmissionForm']);
-            Hook::add('Submission::getSubmissionsListProps', [$this->submissionManagement, 'addSubmissionListProps']);
-            Hook::add('Template::SubmissionWizard::Section::Review::Editors', [$this->submissionManagement, 'addIssueReviewSection']);
-            Hook::add('Submission::validateSubmit', [$this->submissionManagement, 'handleSubmissionValidate']);
+        if ($success && $this->getEnabled($mainContextId)) {
+            $issueManagement = new IssueManagement($this);
+            $submissionManagement = new SubmissionManagement($this);
+
+            Hook::add('Schema::get::issue', [$issueManagement, 'addToIssueSchema']);
+            Hook::add('Templates::Editor::Issues::IssueData::AdditionalMetadata', [$issueManagement, 'addIssueFormFields']);
+            Hook::add('issueform::readuservars', [$issueManagement, 'readIssueFormData']);
+            Hook::add('issueform::execute', [$issueManagement, 'saveIssueFormData']);
+            Hook::add('Issue::edit', [$issueManagement, 'beforeIssueEdit']);
+
+            Hook::add('Schema::get::submission', [$submissionManagement, 'addToSubmissionSchema']);
+            Hook::add('Form::config::after', [$submissionManagement, 'addToSubmissionForm']);
+            Hook::add('Submission::getSubmissionsListProps', [$submissionManagement, 'addSubmissionListProps']);
+            Hook::add('Template::SubmissionWizard::Section::Review::Editors', [$submissionManagement, 'addIssueReviewSection']);
+            Hook::add('Submission::validateSubmit', [$submissionManagement, 'handleSubmissionValidate']);
         }
-        
+
         return $success;
     }
 
-    public function getDisplayName()
+    /**
+     * @copydoc Plugin::getDisplayName()
+     * @noinspection PhpUnused
+     */
+    public function getDisplayName(): object|array|string|null
     {
         return __('plugins.generic.issuePreselection.displayName');
     }
 
-    public function getDescription()
+    /**
+     * @copydoc Plugin::getDescription()
+     * @noinspection PhpUnused
+     */
+    public function getDescription(): object|array|string|null
     {
         return __('plugins.generic.issuePreselection.description');
     }
