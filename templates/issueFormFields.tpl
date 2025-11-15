@@ -4,39 +4,47 @@
  * Additional fields for issue form
  *}
 <div class="section">
-    <h3>{translate key="plugins.generic.issuePreselection.settings.isOpen"}</h3>
-    <p>{translate key="plugins.generic.issuePreselection.settings.isOpenDescription"}</p>
-    
-    <div class="pkpFormField pkpFormField--options" style="cursor: default;">
-        <label style="cursor: pointer;">
-            <input type="checkbox" 
-                   name="isOpen" 
-                   value="1" 
-                   {if $issuePreselectionIsOpen}checked="checked"{/if}
-                   class="pkpFormField__input"
-                   style="cursor: pointer;">
-            <span class="label">{translate key="plugins.generic.issuePreselection.settings.isOpenLabel"}</span>
+    <ul class="checkbox_and_radiobutton">
+        <li>
+            <label>
+                <input type="checkbox"
+                       id="isOpen"
+                       name="isOpen"
+                       value="1"
+                       {if $issuePreselectionIsOpen}checked="checked"{/if}
+                       class="field checkbox">
+                {translate key="plugins.generic.issuePreselection.settings.isOpenLabel"}
+            </label>
+        </li>
+    </ul>
+    <span>
+        <label class="sub_label" for="isOpen">
+            {translate key="plugins.generic.issuePreselection.settings.isOpenDescription"}
         </label>
-    </div>
+    </span>
 </div>
 
 <div class="section">
-    <h3>{translate key="plugins.generic.issuePreselection.settings.editedBy"}</h3>
-    <p>{translate key="plugins.generic.issuePreselection.settings.editedByDescription"}</p>
-    
-    <div class="pkpFormField pkpFormField--select">
-        <select name="editedBy[]" 
-                id="editedBy" 
-                multiple="multiple" 
+    <label>{translate key="plugins.generic.issuePreselection.settings.editedBy"}</label>
+
+    <div>
+        <select name="editedBy[]"
+                id="editedBy"
+                multiple="multiple"
                 size="10"
-                class="pkpFormField__input">
+                class="field select">
             {foreach from=$issuePreselectionEditorOptions key=editorId item=editorName}
-                <option value="{$editorId}" 
+                <option value="{$editorId}"
                         {if in_array($editorId, $issuePreselectionEditors)}selected="selected"{/if}>
                     {$editorName|escape}
                 </option>
             {/foreach}
         </select>
-        <p class="description">Hold Ctrl (Windows) or Cmd (Mac) to select multiple editors.</p>
+
+        <span>
+            <label class="sub_label" for="editedBy">
+                {translate key="plugins.generic.issuePreselection.settings.editedByDescription"} {translate key="plugins.generic.issuePreselection.settings.editedByHelp"}
+            </label>
+        </span>
     </div>
 </div>

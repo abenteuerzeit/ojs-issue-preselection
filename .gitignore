@@ -1,7 +1,6 @@
 # Development files
 *.code-search
 *.ps1
-GetHooks.ps1
 
 # IDE files
 .vscode/
@@ -21,4 +20,10 @@ Thumbs.db
 *.tmp
 *.bak
 
-*/node_modules/*
+node_modules/
+dist/
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+*.env*

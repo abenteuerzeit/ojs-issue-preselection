@@ -6,4 +6,6 @@
  * Plugin entry point
  */
 
-return new \APP\plugins\generic\issuePreselection\IssuePreselectionPlugin();
+use APP\plugins\generic\issuePreselection\IssuePreselectionPlugin;
+
+return new IssuePreselectionPlugin();
