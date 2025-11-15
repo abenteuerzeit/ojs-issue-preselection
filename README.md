@@ -6,16 +6,20 @@
 
 ## Overview
 
-The Issue Preselection Plugin allows authors to select which journal issue their submission should be assigned to during the submission process. Editors can configure which issues are open for submissions and pre-assign guest editors who will automatically be assigned to incoming submissions.
+The Issue Preselection Plugin allows authors to select which journal issue their submission should be assigned to during
+the submission process. Editors can configure which issues are open for submissions and pre-assign guest editors who
+will automatically be assigned to incoming submissions.
 
 ## Features
 
 ### For Authors
+
 - 📝 **Issue Selection During Submission** - Select from available future issues when submitting
 - 🎯 **Direct Response to Calls for Papers** - Submit directly to specific themed issues
 - 👁️ **Filtered Issue List** - Only see issues that editors have marked as open
 
 ### For Editors
+
 - ⚙️ **Issue Configuration** - Mark issues as open/closed for author selection
 - 👥 **Editor Pre-assignment** - Assign guest editors to issues for automatic workflow assignment
 - 🔄 **Automatic Workflow** - Submissions automatically assigned to configured editors with notifications
@@ -90,35 +94,39 @@ Uses OJS's existing settings tables (no database migrations required):
 
 ### Hooks Used
 
-| Hook | Purpose |
-|------|---------|
-| `Schema::get::issue` | Add custom fields to issue schema |
-| `Templates::Editor::Issues::IssueData::AdditionalMetadata` | Extend issue form |
-| `issueform::readuservars` | Register custom form variables |
-| `issueform::execute` | Save custom issue settings |
-| `Issue::edit` | Preserve custom data during edits |
-| `Schema::get::submission` | Add preselectedIssueId to submission schema |
-| `Form::config::after` | Add issue selector to submission wizard |
-| `Submission::getSubmissionsListProps` | Include field in Vue state |
-| `Template::SubmissionWizard::Section::Review::Editors` | Display in review section |
-| `Submission::validateSubmit` | Process assignment on submission |
+| Hook                                                       | Purpose                                     |
+| ---------------------------------------------------------- | ------------------------------------------- |
+| `Schema::get::issue`                                       | Add custom fields to issue schema           |
+| `Templates::Editor::Issues::IssueData::AdditionalMetadata` | Extend issue form                           |
+| `issueform::readuservars`                                  | Register custom form variables              |
+| `issueform::execute`                                       | Save custom issue settings                  |
+| `Issue::edit`                                              | Preserve custom data during edits           |
+| `Schema::get::submission`                                  | Add preselectedIssueId to submission schema |
+| `Form::config::after`                                      | Add issue selector to submission wizard     |
+| `Submission::getSubmissionsListProps`                      | Include field in Vue state                  |
+| `Template::SubmissionWizard::Section::Review::Editors`     | Display in review section                   |
+| `Submission::validateSubmit`                               | Process assignment on submission            |
 
 ## Known Limitations
 
 ### Review Section Display Timing
 
-The selected issue may not immediately appear in the review section when navigating through the submission wizard step-by-step.
+The selected issue may not immediately appear in the review section when navigating through the submission wizard
+step-by-step.
 
-**Why**: OJS's submission wizard uses Vue.js for client-side forms and Smarty for server-side templates. The review section renders before the form's autosave completes.
+**Why**: OJS's submission wizard uses Vue.js for client-side forms and Smarty for server-side templates. The review
+section renders before the form's autosave completes.
 
 **Impact**: Cosmetic only. All data saves correctly and functionality works as expected.
 
 **Workarounds**:
+
 - Click "Save for Later" to trigger a page reload
 - Refresh the page
 - The issue displays correctly when editing existing submissions
 
 **What Works**:
+
 - ✅ Issue selection saves correctly
 - ✅ Publication schedules to selected issue
 - ✅ Guest editors assign automatically

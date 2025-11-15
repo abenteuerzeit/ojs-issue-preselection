@@ -1,12 +1,15 @@
 {
   "name": "issue-preselection-plugin",
-  "version": "1.0.0",
+  "version": "1.5.4",
   "private": true,
   "scripts": {
     "test": "cypress run",
-    "test:open": "cypress open"
+    "test:open": "cypress open",
+    "build": "build.cmd",
+    "release": "npm run build"
   },
   "devDependencies": {
-    "cypress": "^13.0.0"
+    "cypress": "^13.0.0",
+    "prettier": "3.6.2"
   }
 }
