@@ -4,11 +4,24 @@
 [![OJS](https://img.shields.io/badge/OJS-3.5.0.1+-green.svg)](https://pkp.sfu.ca/ojs/)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Configuration](#configuration)
+  - [Setting Up Issues](#setting-up-issues)
+  - [Author Submission Workflow](#author-submission-workflow)
+- [Technical Details](#technical-details)
+- [Development](#development)
+- [Support](#support)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Overview
 
-The Issue Preselection Plugin allows authors to select which journal issue their submission should be assigned to during
-the submission process. Editors can configure which issues are open for submissions and pre-assign guest editors who
-will automatically be assigned to incoming submissions.
+The Issue Preselection Plugin allows authors to select which journal issue their submission should be assigned to during the submission process. Editors can configure which issues are open for submissions and pre-assign guest editors who will automatically be assigned to incoming submissions.
 
 ## Features
 
@@ -55,23 +68,86 @@ Then enable via the OJS admin interface as described above.
 
 ### Setting Up Issues
 
-1. Navigate to **Issues > Future Issues**
-2. Click **Edit** on an issue you want to configure
-3. You'll see two new fields:
-    - **Enable for Submission**: Check to make this issue available for author selection
-    - **Assigned Editors**: Select one or more editors to automatically assign to submissions
+**Step 1: Navigate to Future Issues**
 
-4. Click **Save**
+Navigate to **Issues > Future Issues**
+
+<img width="800" alt="Issues Future Issues" src="https://github.com/user-attachments/assets/4272ef1f-99c8-41a2-82b8-6635df05a892" />
+
+**Step 2: Create or Edit an Issue**
+
+Click **Create** or **Edit** on an issue you want to configure
+
+<img width="800" alt="Create or Edit Issue" src="https://github.com/user-attachments/assets/87174d46-2cea-44f8-a2a1-17da128cb721" />
+
+**Edit** is shown after expanding the view by clicking on the triangular bullet to the left of the issue. You can also click on the name directly.
+
+<img width="800" alt="Issue Options" src="https://github.com/user-attachments/assets/a5bb768d-a66b-4de7-861f-681eea1ec99f" />
+
+**Step 3: Configure Issue Data**
+
+You'll see two new fields under **Issue Data**
+
+<img width="800" alt="Issue Data Fields" src="https://github.com/user-attachments/assets/cfa5bb5e-c359-44a3-bddd-73e04fbc0d60" />
+
+- **Enable for Submission**: Check to make this issue available for author selection
+- **Assigned Editors (Optional)**: Select one or more editors to automatically assign to submissions
+
+**Step 4: Save Changes**
+
+Click **Save**
 
 ### Author Submission Workflow
 
-1. Author clicks "New Submission"
-2. In the "For the Editors" step, they see an "Issue Selection" dropdown
-3. Author selects the target issue
-4. Upon submission:
-    - Publication is scheduled to the selected issue
-    - All pre-assigned editors are added as Guest Editors
-    - Editors receive notifications
+**Step 1: Start New Submission**
+
+Author clicks "New Submission"
+
+**Step 2: View Issue Selection**
+
+In the "For the Editors" step, they see an "Issue Selection" dropdown
+
+<img width="800" alt="Issue Selection Dropdown" src="https://github.com/user-attachments/assets/d7190468-beb8-4302-9964-9a888f5b724d" />
+
+**Step 3: Select Target Issue**
+
+Author selects the target issue
+
+<img width="800" alt="Target Issue Selection" src="https://github.com/user-attachments/assets/c76d480b-bb46-473d-8630-ddae10c78fff" />
+
+**Step 4: Validation - Missing Issue Selection**
+
+If the author does not select an issue, an error notification appears
+
+<img width="800" alt="Error Notification" src="https://github.com/user-attachments/assets/49c0a0f2-5e78-4fe5-a8cd-9f3ec14c86fe" />
+
+**Step 5: Navigation - Back Button**
+
+On clicking Back
+
+<img width="800" alt="Back Navigation" src="https://github.com/user-attachments/assets/d0625957-06c3-440f-95b4-f1f995dc5694" />
+
+**Step 6: Validation - Success**
+
+Successful validation
+
+<img width="800" alt="Successful Validation" src="https://github.com/user-attachments/assets/472fce93-b549-48bb-a47d-4b903e253fef" />
+
+**Step 7: Publication Scheduled**
+
+Upon submission, publication is scheduled to the selected issue
+
+<img width="800" alt="Publication Scheduled" src="https://github.com/user-attachments/assets/d540f744-3ccc-418a-8002-76e59a6566d2" />
+
+**Step 8: Guest Editors Added**
+
+All pre-assigned editors are added as Guest Editors
+
+<img width="400" alt="Guest Editors Added" src="https://github.com/user-attachments/assets/8fd7ef5b-319c-4dc8-8e43-e9d94a763523" />
+
+**Step 9: Notifications Sent**
+
+Editors receive notifications
 
 ## Technical Details
 
