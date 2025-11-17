@@ -2,10 +2,14 @@
 
 /**
  * @file plugins/generic/issuePreselection/classes/SubmissionManagement.php
- * @noinspection PhpUnusedParameterInspection
+ *
+ * Copyright (c) 2017-2023 Simon Fraser University
+ * Copyright (c) 2017-2023 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
  *
  * @class SubmissionManagement
  * @brief Handles submission-related functionality for the Issue Preselection plugin
+ * @noinspection PhpUnusedParameterInspection
  */
 
 namespace APP\plugins\generic\issuePreselection\classes;
@@ -62,7 +66,12 @@ class SubmissionManagement
     {
         $schema = &$params[0];
 
-        $schema->properties->{Constants::SUBMISSION_PRESELECTED_ISSUE_ID} = (object)['type' => 'integer', 'apiSummary' => true, 'writeDisabledInApi' => false, 'validation' => ['nullable']];
+        $schema->properties->{Constants::SUBMISSION_PRESELECTED_ISSUE_ID} = (object) [
+            "type" => "integer",
+            "apiSummary" => true,
+            "writeDisabledInApi" => false,
+            "validation" => ["nullable"],
+        ];
 
         return false;
     }
@@ -92,11 +101,11 @@ class SubmissionManagement
             return false;
         }
 
-        if (!isset($config['action']) || !preg_match('/submissions\/(\d+)/', $config['action'], $matches)) {
+        if (!isset($config["action"]) || !preg_match("/submissions\/(\d+)/", $config["action"], $matches)) {
             return false;
         }
 
-        $submissionId = (int)$matches[1];
+        $submissionId = (int) $matches[1];
         $submission = Repo::submission()->get($submissionId);
 
         if (!$submission) {
@@ -111,20 +120,29 @@ class SubmissionManagement
             return false;
         }
 
-        $issueOptions = [['value' => 0, 'label' => __('plugins.generic.issuePreselection.selectOption')]];
+        $issueOptions = [["value" => 0, "label" => __("plugins.generic.issuePreselection.selectOption")]];
 
         foreach ($issues as $issue) {
-            $issueOptions[] = ['value' => (int)$issue->getId(), 'label' => $issue->getIssueIdentification()];
+            $issueOptions[] = ["value" => (int) $issue->getId(), "label" => $issue->getIssueIdentification()];
         }
 
-        $fieldConfig = ['name' => Constants::SUBMISSION_PRESELECTED_ISSUE_ID, 'component' => 'field-select', 'label' => __('plugins.generic.issuePreselection.issueLabel'), 'description' => __('plugins.generic.issuePreselection.description.field'), 'options' => $issueOptions, 'value' => $currentValue ? (int)$currentValue : 0, 'isRequired' => true, 'groupId' => 'default'];
+        $fieldConfig = [
+            "name" => Constants::SUBMISSION_PRESELECTED_ISSUE_ID,
+            "component" => "field-select",
+            "label" => __("plugins.generic.issuePreselection.issueLabel"),
+            "description" => __("plugins.generic.issuePreselection.description.field"),
+            "options" => $issueOptions,
+            "value" => $currentValue ? (int) $currentValue : 0,
+            "isRequired" => true,
+            "groupId" => "default",
+        ];
 
-        $config['fields'][] = $fieldConfig;
+        $config["fields"][] = $fieldConfig;
 
-        if (!isset($config['values'])) {
-            $config['values'] = [];
+        if (!isset($config["values"])) {
+            $config["values"] = [];
         }
-        $config['values'][Constants::SUBMISSION_PRESELECTED_ISSUE_ID] = $currentValue ? (int)$currentValue : 0;
+        $config["values"][Constants::SUBMISSION_PRESELECTED_ISSUE_ID] = $currentValue ? (int) $currentValue : 0;
 
         return false;
     }
@@ -142,14 +160,14 @@ class SubmissionManagement
         $smarty = $params[1];
         $output = &$params[2];
 
-        $submission = $smarty->getTemplateVars('submission');
+        $submission = $smarty->getTemplateVars("submission");
 
         if (!$submission) {
             return false;
         }
 
-        $localeKey = $smarty->getTemplateVars('localeKey');
-        $submissionLocale = $submission->getData('locale');
+        $localeKey = $smarty->getTemplateVars("localeKey");
+        $submissionLocale = $submission->getData("locale");
 
         if ($localeKey !== $submissionLocale) {
             return false;
@@ -173,8 +191,8 @@ class SubmissionManagement
             $issueMap[$issue->getId()] = $issue->getIssueIdentification();
         }
 
-        $smarty->assign('issueMap', $issueMap);
-        $output .= $smarty->fetch($this->plugin->getTemplateResource('submissionReviewIssue.tpl'));
+        $smarty->assign("issueMap", $issueMap);
+        $output .= $smarty->fetch($this->plugin->getTemplateResource("submissionReviewIssue.tpl"));
 
         return false;
     }
@@ -197,8 +215,10 @@ class SubmissionManagement
 
         $openIssues = $this->issueManagement->getOpenFutureIssues($context->getId());
 
-        if (!empty($openIssues) && (!$issueId)) {
-            $errors[Constants::SUBMISSION_PRESELECTED_ISSUE_ID] = [__('plugins.generic.issuePreselection.error.issueRequired')];
+        if (!empty($openIssues) && !$issueId) {
+            $errors[Constants::SUBMISSION_PRESELECTED_ISSUE_ID] = [
+                __("plugins.generic.issuePreselection.error.issueRequired"),
+            ];
             return false;
         }
 
@@ -218,7 +238,7 @@ class SubmissionManagement
         }
 
         try {
-            Repo::publication()->edit($publication, ['issueId' => $issueId]);
+            Repo::publication()->edit($publication, ["issueId" => $issueId]);
 
             $editorIds = $issue->getData(Constants::ISSUE_EDITED_BY);
 
@@ -277,11 +297,19 @@ class SubmissionManagement
     private function getEditorUserGroup(int $contextId, int $userId): ?object
     {
         /** @noinspection PhpUndefinedMethodInspection */
-        $userGroups = UserGroup::query()->withContextIds([$contextId])->withUserIds([$userId])->withRoleIds([Role::ROLE_ID_SUB_EDITOR])->get();
+        $userGroups = UserGroup::query()
+            ->withContextIds([$contextId])
+            ->withUserIds([$userId])
+            ->withRoleIds([Role::ROLE_ID_SUB_EDITOR])
+            ->get();
 
         if ($userGroups->isEmpty()) {
             /** @noinspection PhpUndefinedMethodInspection */
-            $userGroups = UserGroup::query()->withContextIds([$contextId])->withUserIds([$userId])->withRoleIds([Role::ROLE_ID_MANAGER])->get();
+            $userGroups = UserGroup::query()
+                ->withContextIds([$contextId])
+                ->withUserIds([$userId])
+                ->withRoleIds([Role::ROLE_ID_MANAGER])
+                ->get();
         }
 
         return $userGroups->isEmpty() ? null : $userGroups->first();
@@ -298,7 +326,11 @@ class SubmissionManagement
     private function isAlreadyAssigned(int $submissionId, int $userId, int $userGroupId): bool
     {
         /** @noinspection PhpUndefinedMethodInspection */
-        return StageAssignment::query()->withSubmissionIds([$submissionId])->withUserId($userId)->withUserGroupId($userGroupId)->first() !== null;
+        return StageAssignment::query()
+            ->withSubmissionIds([$submissionId])
+            ->withUserId($userId)
+            ->withUserGroupId($userGroupId)
+            ->first() !== null;
     }
 
     /**

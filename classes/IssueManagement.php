@@ -2,10 +2,14 @@
 
 /**
  * @file plugins/generic/issuePreselection/classes/IssueManagement.php
- * @noinspection PhpUnusedParameterInspection
+ *
+ * Copyright (c) 2017-2023 Simon Fraser University
+ * Copyright (c) 2017-2023 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
  *
  * @class IssueManagement
  * @brief Handles issue-related functionality for the Issue Preselection plugin
+ * @noinspection PhpUnusedParameterInspection
  */
 
 namespace APP\plugins\generic\issuePreselection\classes;
@@ -39,9 +43,18 @@ class IssueManagement
     {
         $schema = &$params[0];
 
-        $schema->properties->{Constants::ISSUE_IS_OPEN} = (object)['type' => 'boolean', 'apiSummary' => false, 'validation' => ['nullable']];
+        $schema->properties->{Constants::ISSUE_IS_OPEN} = (object) [
+            "type" => "boolean",
+            "apiSummary" => false,
+            "validation" => ["nullable"],
+        ];
 
-        $schema->properties->{Constants::ISSUE_EDITED_BY} = (object)['type' => 'array', 'items' => (object)['type' => 'integer'], 'apiSummary' => false, 'validation' => ['nullable']];
+        $schema->properties->{Constants::ISSUE_EDITED_BY} = (object) [
+            "type" => "array",
+            "items" => (object) ["type" => "integer"],
+            "apiSummary" => false,
+            "validation" => ["nullable"],
+        ];
 
         return false;
     }
@@ -63,7 +76,7 @@ class IssueManagement
             return false;
         }
 
-        $issueId = $request->getUserVar('issueId');
+        $issueId = $request->getUserVar("issueId");
         $isOpen = false;
         $assignedEditors = [];
 
@@ -71,7 +84,7 @@ class IssueManagement
             $issue = Repo::issue()->get($issueId);
 
             if ($issue) {
-                $isOpen = (bool)$issue->getData(Constants::ISSUE_IS_OPEN);
+                $isOpen = (bool) $issue->getData(Constants::ISSUE_IS_OPEN);
                 $assignedEditors = $issue->getData(Constants::ISSUE_EDITED_BY) ?: [];
             }
         }
@@ -79,12 +92,12 @@ class IssueManagement
         $editorOptions = $this->getEditorOptions($context);
 
         $smarty->assign([
-            'issuePreselectionIsOpen' => $isOpen,
-            'issuePreselectionEditors' => $assignedEditors,
-            'issuePreselectionEditorOptions' => $editorOptions,
+            "issuePreselectionIsOpen" => $isOpen,
+            "issuePreselectionEditors" => $assignedEditors,
+            "issuePreselectionEditorOptions" => $editorOptions,
         ]);
 
-        $templatePath = $this->plugin->getTemplateResource('issueFormFields.tpl');
+        $templatePath = $this->plugin->getTemplateResource("issueFormFields.tpl");
         $templateOutput = $smarty->fetch($templatePath);
         $output .= $templateOutput;
 
@@ -99,7 +112,8 @@ class IssueManagement
         $editorIds = [];
         $contextId = $context->getId();
 
-        $managers = Repo::user()->getCollector()
+        $managers = Repo::user()
+            ->getCollector()
             ->filterByContextIds([$contextId])
             ->filterByRoleIds([Role::ROLE_ID_MANAGER])
             ->getMany();
@@ -108,7 +122,8 @@ class IssueManagement
             $editorIds[$user->getId()] = $user->getFullName();
         }
 
-        $subEditors = Repo::user()->getCollector()
+        $subEditors = Repo::user()
+            ->getCollector()
             ->filterByContextIds([$contextId])
             ->filterByRoleIds([Role::ROLE_ID_SUB_EDITOR])
             ->getMany();
@@ -132,11 +147,17 @@ class IssueManagement
         $newIssue = &$params[0];
         $issue = $params[1];
 
-        if ($newIssue->getData(Constants::ISSUE_IS_OPEN) === null && $issue->getData(Constants::ISSUE_IS_OPEN) !== null) {
+        if (
+            $newIssue->getData(Constants::ISSUE_IS_OPEN) === null &&
+            $issue->getData(Constants::ISSUE_IS_OPEN) !== null
+        ) {
             $newIssue->setData(Constants::ISSUE_IS_OPEN, $issue->getData(Constants::ISSUE_IS_OPEN));
         }
 
-        if ($newIssue->getData(Constants::ISSUE_EDITED_BY) === null && $issue->getData(Constants::ISSUE_EDITED_BY) !== null) {
+        if (
+            $newIssue->getData(Constants::ISSUE_EDITED_BY) === null &&
+            $issue->getData(Constants::ISSUE_EDITED_BY) !== null
+        ) {
             $newIssue->setData(Constants::ISSUE_EDITED_BY, $issue->getData(Constants::ISSUE_EDITED_BY));
         }
 
@@ -172,7 +193,7 @@ class IssueManagement
 
         $issue = $form->issue;
 
-        $isOpen = (bool)$form->getData(Constants::ISSUE_IS_OPEN);
+        $isOpen = (bool) $form->getData(Constants::ISSUE_IS_OPEN);
         $editedBy = $form->getData(Constants::ISSUE_EDITED_BY);
 
         if (!is_array($editedBy)) {
@@ -190,7 +211,10 @@ class IssueManagement
      */
     public function getOpenFutureIssues(int $contextId): array
     {
-        $collector = Repo::issue()->getCollector()->filterByContextIds([$contextId])->filterByPublished(false);
+        $collector = Repo::issue()
+            ->getCollector()
+            ->filterByContextIds([$contextId])
+            ->filterByPublished(false);
 
         $issues = $collector->getMany();
 

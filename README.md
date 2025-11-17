@@ -14,15 +14,15 @@ will automatically be assigned to incoming submissions.
 
 ### For Authors
 
-- 📝 **Issue Selection During Submission** - Select from available future issues when submitting
-- 🎯 **Direct Response to Calls for Papers** - Submit directly to specific themed issues
-- 👁️ **Filtered Issue List** - Only see issues that editors have marked as open
+- **Issue Selection During Submission** - Select from available future issues when submitting
+- **Direct Response to Calls for Papers** - Submit directly to specific themed issues
+- **Filtered Issue List** - Only see issues that editors have marked as open
 
 ### For Editors
 
-- ⚙️ **Issue Configuration** - Mark issues as open/closed for author selection
-- 👥 **Editor Pre-assignment** - Assign guest editors to issues for automatic workflow assignment
-- 🔄 **Automatic Workflow** - Submissions automatically assigned to configured editors with notifications
+- **Issue Configuration** - Mark issues as open/closed for author selection
+- **Editor Pre-assignment** - Assign guest editors to issues for automatic workflow assignment
+- **Automatic Workflow** - Submissions automatically assigned to configured editors with notifications
 
 ## Requirements
 
@@ -34,7 +34,7 @@ will automatically be assigned to incoming submissions.
 
 ### Method 1: Manual Installation
 
-1. Download the latest release from the [releases page](https://github.com/yourusername/ojs-issue-preselection/releases)
+1. Download the latest release from the [releases page](https://github.com/abenteuerzeit/ojs-issue-preselection/releases)
 2. Extract the archive
 3. Copy the `issuePreselection` folder to `plugins/generic/` in your OJS installation
 4. Log in to OJS as Administrator
@@ -46,7 +46,7 @@ will automatically be assigned to incoming submissions.
 
 ```bash
 cd /path/to/ojs/plugins/generic
-git clone https://github.com/yourusername/ojs-issue-preselection.git issuePreselection
+git clone https://github.com/abenteuerzeit/ojs-issue-preselection.git issuePreselection
 ```
 
 Then enable via the OJS admin interface as described above.
@@ -58,8 +58,8 @@ Then enable via the OJS admin interface as described above.
 1. Navigate to **Issues > Future Issues**
 2. Click **Edit** on an issue you want to configure
 3. You'll see two new fields:
-   - **Enable for Submission**: Check to make this issue available for author selection
-   - **Assigned Editors**: Select one or more editors to automatically assign to submissions
+    - **Enable for Submission**: Check to make this issue available for author selection
+    - **Assigned Editors**: Select one or more editors to automatically assign to submissions
 
 4. Click **Save**
 
@@ -69,9 +69,9 @@ Then enable via the OJS admin interface as described above.
 2. In the "For the Editors" step, they see an "Issue Selection" dropdown
 3. Author selects the target issue
 4. Upon submission:
-   - Publication is scheduled to the selected issue
-   - All pre-assigned editors are added as Guest Editors
-   - Editors receive notifications
+    - Publication is scheduled to the selected issue
+    - All pre-assigned editors are added as Guest Editors
+    - Editors receive notifications
 
 ## Technical Details
 
@@ -107,77 +107,7 @@ Uses OJS's existing settings tables (no database migrations required):
 | `Template::SubmissionWizard::Section::Review::Editors`     | Display in review section                   |
 | `Submission::validateSubmit`                               | Process assignment on submission            |
 
-## Known Limitations
-
-### Review Section Display Timing
-
-The selected issue may not immediately appear in the review section when navigating through the submission wizard
-step-by-step.
-
-**Why**: OJS's submission wizard uses Vue.js for client-side forms and Smarty for server-side templates. The review
-section renders before the form's autosave completes.
-
-**Impact**: Cosmetic only. All data saves correctly and functionality works as expected.
-
-**Workarounds**:
-
-- Click "Save for Later" to trigger a page reload
-- Refresh the page
-- The issue displays correctly when editing existing submissions
-
-**What Works**:
-
-- ✅ Issue selection saves correctly
-- ✅ Publication schedules to selected issue
-- ✅ Guest editors assign automatically
-- ✅ Submission completes successfully
-
-## Troubleshooting
-
-### Issue selector doesn't appear
-
-- Verify the plugin is enabled in Settings > Website > Plugins
-- Check that at least one issue is marked as "Enable for Submission"
-- Clear OJS cache: `php tools/runScheduledTasks.php`
-
-### Editors not assigned automatically
-
-- Verify editors are assigned to the issue in Issues > Future Issues
-- Check that assigned users have Section Editor or Manager role
-- Review error logs in `files/error.log`
-
-### Selected issue not displaying in review
-
-- This is expected behavior (see Known Limitations above)
-- Data is saving correctly despite display timing
-- Click "Save for Later" to see the value after page reload
-
 ## Development
-
-### File Structure
-
-```
-plugins/generic/issuePreselection/
-├── IssuePreselectionPlugin.php    # Main plugin class
-├── classes/
-│   ├── Constants.php              # Shared constants
-│   ├── IssueManagement.php        # Issue-related functionality
-│   └── SubmissionManagement.php   # Submission-related functionality
-├── cypress/
-│   ├── tests/functional/          # Cypress integration tests
-│   ├── fixtures/                  # Test fixtures
-│   └── README.md                  # Test documentation
-├── index.php                       # Plugin entry point
-├── version.xml                     # Plugin metadata
-├── README.md                       # Documentation
-├── CHANGELOG.md                    # Version history
-├── LICENSE                         # GPL-3.0 license
-├── locale/
-│   └── en/
-│       └── locale.po              # English translations
-└── templates/
-    └── issueFormFields.tpl        # Issue form custom fields
-```
 
 ### Adding Translations
 

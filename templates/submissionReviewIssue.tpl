@@ -1,6 +1,10 @@
 {**
  * templates/submissionReviewIssue.tpl
  *
+ * Copyright (c) 2017-2023 Simon Fraser University
+ * Copyright (c) 2017-2023 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
  * Display selected issue in submission wizard review section
  *}
 <div class="submissionWizard__reviewPanel__item"
