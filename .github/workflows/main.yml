@@ -30,23 +30,3 @@ jobs:
                   branch: ${{ matrix.ojs-version }}
                   repository: pkp
                   plugin: issuePreselection
-
-            - name: Build plugin package
-              if: matrix.php-version == '8.2' && matrix.database == 'mysql'
-              working-directory: issuePreselection
-              run: |
-                  VERSION=$(grep -oP '(?<=<release>)[^<]+' version.xml)
-                  mkdir -p dist/issuePreselection
-                  cp -r classes locale templates IssuePreselectionPlugin.php version.xml index.php dist/issuePreselection/
-                  cd dist
-                  tar -czf issuePreselection.tar.gz issuePreselection
-
-            - name: Run Cypress tests
-              if: matrix.php-version == '8.2' && matrix.database == 'mysql'
-              working-directory: issuePreselection
-              run: |
-                  npm install
-                  npx cypress run
-              env:
-                  CYPRESS_BASE_URL: http://localhost
-                  PLUGIN_ARCHIVE: ${{ github.workspace }}/issuePreselection/dist/issuePreselection.tar.gz

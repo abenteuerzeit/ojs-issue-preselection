@@ -13,8 +13,9 @@ import { faker } from "@faker-js/faker";
 
 describe("Submission Wizard - Issue Preselection", function () {
     before(() => {
+        // Skip plugin installation in CI - PKP action already installs it
         const pluginArchive = Cypress.env("PLUGIN_ARCHIVE");
-        if (pluginArchive) {
+        if (pluginArchive && !Cypress.env("CI")) {
             cy.uploadPlugin(pluginArchive);
             cy.enablePlugin("issuePreselection");
         }
