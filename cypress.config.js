@@ -9,11 +9,12 @@ export default defineConfig({
     chromeWebSecurity: false,
 
     env: {
-        pluginName: "issuePreselection"
+        pluginName: "issuePreselection",
+        contextPath: "publicknowledge"
     },
 
     e2e: {
-        baseUrl: "https://localhost:8443",
+        baseUrl: "http://localhost",
         specPattern: "cypress/tests/**/*.cy.{js,jsx,ts,tsx}",
         setupNodeEvents(on, config) {
             // implement node event listeners here

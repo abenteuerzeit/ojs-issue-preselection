@@ -13,6 +13,6 @@ cd "$PLUGIN_DIR"
 npm install
 
 echo "Running Cypress tests..."
-npx cypress run --headless --browser chrome --config baseUrl=http://localhost --env contextPath=index,adminUsername=admin,adminPassword=admin,editorUsername=dbarnes,editorPassword=dbarnes,authorUsername=ccorino,authorPassword=ccorino,CI=true
+npx cypress run --headless --browser chrome --config baseUrl=http://localhost --env contextPath=publicknowledge,adminUsername=admin,adminPassword=admin,editorUsername=dbarnes,editorPassword=dbarnes,authorUsername=ccorino,authorPassword=ccorino,CI=true
 
 
