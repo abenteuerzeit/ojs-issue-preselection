@@ -80,6 +80,20 @@ declare global {
              * @example cy.saveIssue()
              */
             saveIssue(): Chainable<void>;
+
+            /**
+             * Upload a plugin archive file
+             * @param pluginPath - Path to the plugin .tar.gz file
+             * @example cy.uploadPlugin('/path/to/plugin.tar.gz')
+             */
+            uploadPlugin(pluginPath: string): Chainable<void>;
+
+            /**
+             * Enable a plugin by name
+             * @param pluginName - The plugin name/identifier
+             * @example cy.enablePlugin('issuePreselection')
+             */
+            enablePlugin(pluginName: string): Chainable<void>;
         }
     }
 }

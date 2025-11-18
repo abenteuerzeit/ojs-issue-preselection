@@ -10,6 +10,14 @@
 /// <reference types="cypress" />
 
 describe("Issue Management", function () {
+    before(() => {
+        const pluginArchive = Cypress.env("PLUGIN_ARCHIVE");
+        if (pluginArchive) {
+            cy.uploadPlugin(pluginArchive);
+            cy.enablePlugin("issuePreselection");
+        }
+    });
+
     const createIssue = (volume, number, year) => {
         cy.get('a:contains("Create Issue"), button:contains("Create Issue")').first().click();
         cy.get("form#issueForm", { timeout: 10000 }).should("exist");

@@ -12,6 +12,14 @@
 import { faker } from "@faker-js/faker";
 
 describe("Submission Wizard - Issue Preselection", function () {
+    before(() => {
+        const pluginArchive = Cypress.env("PLUGIN_ARCHIVE");
+        if (pluginArchive) {
+            cy.uploadPlugin(pluginArchive);
+            cy.enablePlugin("issuePreselection");
+        }
+    });
+
     const setupIssueWithEditors = (editorIndices = [1]) => {
         cy.loginAsAdmin();
         cy.visitManageIssues();
