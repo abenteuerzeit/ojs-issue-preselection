@@ -29,4 +29,5 @@ jobs:
                   node_version: 20
                   branch: ${{ matrix.ojs-version }}
                   repository: pkp
-                  plugin: issuePreselection
+                  plugin: true
+                  dataset_inject: true

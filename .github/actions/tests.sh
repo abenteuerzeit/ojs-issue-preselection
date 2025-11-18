@@ -2,8 +2,14 @@
 
 set -e
 
-echo "Installing Cypress dependencies..."
-cd plugins/generic/issuePreselection
+# Determine the plugin directory name (could be issuePreselection or ojs-issue-preselection)
+PLUGIN_DIR="plugins/generic/issuePreselection"
+if [ ! -d "$PLUGIN_DIR" ]; then
+    PLUGIN_DIR="plugins/generic/ojs-issue-preselection"
+fi
+
+echo "Installing Cypress dependencies in $PLUGIN_DIR..."
+cd "$PLUGIN_DIR"
 npm install
 
 echo "Running Cypress tests..."
