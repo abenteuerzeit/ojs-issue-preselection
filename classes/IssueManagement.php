@@ -9,47 +9,40 @@
  *
  * @class IssueManagement
  * @brief Handles issue-related functionality for the Issue Preselection plugin
- * @noinspection PhpUnusedParameterInspection
  */
 
 namespace APP\plugins\generic\issuePreselection\classes;
 
-use APP\core\Application;
+use APP\controllers\grid\issues\form\IssueForm;
 use APP\facades\Repo;
-use APP\plugins\generic\issuePreselection\IssuePreselectionPlugin;
+use APP\issue\Issue;
 use PKP\context\Context;
-use PKP\security\Role;
 
-class IssueManagement
+class IssueManagement extends BaseManagement
 {
-    /** @var IssuePreselectionPlugin */
-    public IssuePreselectionPlugin $plugin;
-
-    /** @param IssuePreselectionPlugin $plugin */
-    public function __construct(IssuePreselectionPlugin &$plugin)
-    {
-        $this->plugin = &$plugin;
-    }
-
     /**
      * Add custom fields to issue schema
      *
+     * Adds two custom properties to the issue schema:
+     * - isOpen: Boolean flag indicating if the issue is open for submissions
+     * - editedBy: Array of editor user IDs assigned to this issue
+     *
      * @hook Schema::get::issue
-     * @param string $hookName
-     * @param array $params
-     * @return bool
+     *
+     * @param string $hookName The name of the hook being called
+     * @param array $params Hook parameters [&$schema]
+     *
+     * @return bool Always returns false to continue hook processing
      */
     public function addToIssueSchema(string $hookName, array $params): bool
     {
-        $schema = &$params[0];
-
-        $schema->properties->{Constants::ISSUE_IS_OPEN} = (object) [
+        $params[0]->properties->{Constants::ISSUE_IS_OPEN} = (object) [
             "type" => "boolean",
             "apiSummary" => false,
             "validation" => ["nullable"],
         ];
 
-        $schema->properties->{Constants::ISSUE_EDITED_BY} = (object) [
+        $params[0]->properties->{Constants::ISSUE_EDITED_BY} = (object) [
             "type" => "array",
             "items" => (object) ["type" => "integer"],
             "apiSummary" => false,
@@ -62,169 +55,256 @@ class IssueManagement
     /**
      * Add fields to issue form template
      *
+     * Injects custom form fields into the issue editing form to allow editors
+     * to mark an issue as open for submissions and assign editors to it.
+     *
      * @hook Templates::Editor::Issues::IssueData::AdditionalMetadata
+     *
+     * @param string $hookName The name of the hook being called
+     * @param array $params Hook parameters [$hookName, $smarty, &$output]
+     *
+     * @return bool Always returns false to continue hook processing
      */
     public function addIssueFormFields(string $hookName, array $params): bool
     {
-        $smarty = $params[1];
-        $output = &$params[2];
-
-        $request = Application::get()->getRequest();
-        $context = $request->getContext();
-
+        $context = $this->getContext();
         if (!$context) {
             return false;
         }
 
-        $issueId = $request->getUserVar("issueId");
-        $isOpen = false;
-        $assignedEditors = [];
+        $issue = $this->getCurrentIssue();
+        $templateData = $this->prepareIssueFormData($issue, $context);
 
-        if ($issueId) {
-            $issue = Repo::issue()->get($issueId);
-
-            if ($issue) {
-                $isOpen = (bool) $issue->getData(Constants::ISSUE_IS_OPEN);
-                $assignedEditors = $issue->getData(Constants::ISSUE_EDITED_BY) ?: [];
-            }
-        }
-
-        $editorOptions = $this->getEditorOptions($context);
-
-        $smarty->assign([
-            "issuePreselectionIsOpen" => $isOpen,
-            "issuePreselectionEditors" => $assignedEditors,
-            "issuePreselectionEditorOptions" => $editorOptions,
-        ]);
-
-        $templatePath = $this->plugin->getTemplateResource("issueFormFields.tpl");
-        $templateOutput = $smarty->fetch($templatePath);
-        $output .= $templateOutput;
+        $params[1]->assign($templateData);
+        $params[2] .= $this->renderTemplate($params[1], "issueFormFields.tpl");
 
         return false;
     }
 
     /**
-     * Get editor options for the select field
+     * Get the current issue being edited
+     *
+     * Retrieves the issue ID from the request and fetches the corresponding issue object.
+     *
+     * @return Issue|null The issue object or null if not found
      */
-    public function getEditorOptions(Context $context): array
+    private function getCurrentIssue(): ?object
     {
-        $editorIds = [];
-        $contextId = $context->getId();
+        $issueId = $this->getRequest()->getUserVar("issueId");
+        return $issueId ? Repo::issue()->get($issueId) : null;
+    }
 
-        $managers = Repo::user()
-            ->getCollector()
-            ->filterByContextIds([$contextId])
-            ->filterByRoleIds([Role::ROLE_ID_MANAGER])
-            ->getMany();
+    /**
+     * Prepare template data for issue form
+     *
+     * Assembles all data needed for the issue form template, including the issue's
+     * open status, assigned editors, and available editor options.
+     *
+     * @param Issue|null $issue The issue being edited
+     * @param Context $context The current journal/press context
+     *
+     * @return array Associative array of template variables
+     */
+    private function prepareIssueFormData(?Issue $issue, Context $context): array
+    {
+        return [
+            "issuePreselectionIsOpen" => $this->getIssueOpenStatus($issue),
+            "issuePreselectionEditors" => $this->getIssueEditors($issue),
+            "issuePreselectionEditorOptions" => $this->getEditorOptions($context),
+        ];
+    }
 
-        foreach ($managers as $user) {
-            $editorIds[$user->getId()] = $user->getFullName();
-        }
+    /**
+     * Get issue open status
+     *
+     * Retrieves the isOpen flag from the issue data, defaulting to false if not set.
+     *
+     * @param Issue|null $issue The issue object
+     *
+     * @return bool True if the issue is open for submissions, false otherwise
+     */
+    private function getIssueOpenStatus(?Issue $issue): bool
+    {
+        return $issue && $issue->getData(Constants::ISSUE_IS_OPEN);
+    }
 
-        $subEditors = Repo::user()
-            ->getCollector()
-            ->filterByContextIds([$contextId])
-            ->filterByRoleIds([Role::ROLE_ID_SUB_EDITOR])
-            ->getMany();
-
-        foreach ($subEditors as $user) {
-            if (!isset($editorIds[$user->getId()])) {
-                $editorIds[$user->getId()] = $user->getFullName();
-            }
-        }
-
-        return $editorIds;
+    /**
+     * Get editors assigned to issue
+     *
+     * Retrieves the editedBy array from the issue data, defaulting to an empty array.
+     *
+     * @param Issue|null $issue The issue object
+     *
+     * @return array Array of editor user IDs
+     */
+    private function getIssueEditors(?Issue $issue): array
+    {
+        return $issue ? ($issue->getData(Constants::ISSUE_EDITED_BY) ?: []) : [];
     }
 
     /**
      * Ensure custom data is preserved when issue is edited
      *
+     * When an issue is edited, this hook ensures that our custom fields
+     * (isOpen and editedBy) are preserved if they're not explicitly set
+     * in the new issue data.
+     *
      * @hook Issue::edit
+     *
+     * @param string $hookName The name of the hook being called
+     * @param array $params Hook parameters [&$newIssue, $issue, $request]
+     *
+     * @return bool Always returns false to continue hook processing
      */
     public function beforeIssueEdit(string $hookName, array $params): bool
     {
-        $newIssue = &$params[0];
-        $issue = $params[1];
-
-        if (
-            $newIssue->getData(Constants::ISSUE_IS_OPEN) === null &&
-            $issue->getData(Constants::ISSUE_IS_OPEN) !== null
-        ) {
-            $newIssue->setData(Constants::ISSUE_IS_OPEN, $issue->getData(Constants::ISSUE_IS_OPEN));
+        foreach ([Constants::ISSUE_IS_OPEN, Constants::ISSUE_EDITED_BY] as $field) {
+            if ($params[0]->getData($field) === null && $params[1]->getData($field) !== null) {
+                $params[0]->setData($field, $params[1]->getData($field));
+            }
         }
-
-        if (
-            $newIssue->getData(Constants::ISSUE_EDITED_BY) === null &&
-            $issue->getData(Constants::ISSUE_EDITED_BY) !== null
-        ) {
-            $newIssue->setData(Constants::ISSUE_EDITED_BY, $issue->getData(Constants::ISSUE_EDITED_BY));
-        }
-
         return false;
     }
 
     /**
      * Read issue form data - register our custom fields
      *
+     * Registers our custom fields (isOpen and editedBy) so they are read from
+     * the form submission and made available to the form handler.
+     *
      * @hook issueform::readuservars
+     *
+     * @param string $hookName The name of the hook being called
+     * @param array $params Hook parameters [$issueForm, &$userVars]
+     *
+     * @return bool Always returns false to continue hook processing
      */
-    public function readIssueFormData(string $hookName, array $params): bool
+    public function readIssueFormData(string $hookName, array &$params): bool
     {
-        $userVars = &$params[1];
-        $userVars[] = Constants::ISSUE_IS_OPEN;
-        $userVars[] = Constants::ISSUE_EDITED_BY;
-
+        // $params is passed by reference and modified to register custom fields
+        $params[1][] = Constants::ISSUE_IS_OPEN;
+        $params[1][] = Constants::ISSUE_EDITED_BY;
         return false;
     }
 
     /**
      * Save issue form data
      *
+     * Saves the custom field values (isOpen and editedBy) when the issue form
+     * is submitted. Normalizes the editedBy field to always be an array. If the
+     * editor assignments have changed, syncs those changes to all submissions
+     * assigned to this issue.
+     *
      * @hook issueform::execute
+     *
+     * @param string $hookName The name of the hook being called
+     * @param array $params Hook parameters [$issueForm]
+     *
+     * @return bool Always returns false to continue hook processing
      */
     public function saveIssueFormData(string $hookName, array $params): bool
     {
-        $form = $params[0];
-
-        if (!isset($form->issue) || !$form->issue) {
+        $issue = $params[0]->issue ?? null;
+        if (!$issue) {
             return false;
         }
 
-        $issue = $form->issue;
+        $form = $params[0];
 
-        $isOpen = (bool) $form->getData(Constants::ISSUE_IS_OPEN);
-        $editedBy = $form->getData(Constants::ISSUE_EDITED_BY);
+        $oldEditors = $issue->getData(Constants::ISSUE_EDITED_BY) ?: [];
 
-        if (!is_array($editedBy)) {
-            $editedBy = $editedBy ? [$editedBy] : [];
+        $this->saveIssueOpenStatus($issue, $form);
+        $this->saveIssueEditors($issue, $form);
+
+        $newEditors = $issue->getData(Constants::ISSUE_EDITED_BY) ?: [];
+
+        if ($oldEditors !== $newEditors) {
+            $this->syncSubmissionEditors($issue, $newEditors);
         }
-
-        $issue->setData(Constants::ISSUE_IS_OPEN, $isOpen);
-        $issue->setData(Constants::ISSUE_EDITED_BY, $editedBy);
 
         return false;
     }
 
     /**
-     * Get open future issues
+     * Save issue open status
+     *
+     * Persists the isOpen flag from the form to the issue data.
+     *
+     * @param object $issue The issue object
+     * @param object $form The form object containing submitted data
+     *
+     * @return void
      */
-    public function getOpenFutureIssues(int $contextId): array
+    private function saveIssueOpenStatus(object $issue, object $form): void
     {
-        $collector = Repo::issue()
-            ->getCollector()
-            ->filterByContextIds([$contextId])
-            ->filterByPublished(false);
+        $issue->setData(Constants::ISSUE_IS_OPEN, (bool) $form->getData(Constants::ISSUE_IS_OPEN));
+    }
 
-        $issues = $collector->getMany();
+    /**
+     * Save issue editors
+     *
+     * Persists the editedBy array from the form to the issue data after normalization.
+     *
+     * @param Issue $issue The issue object
+     * @param IssueForm $form The form object containing submitted data
+     *
+     * @return void
+     */
+    private function saveIssueEditors(Issue $issue, IssueForm $form): void
+    {
+        $editedBy = $form->getData(Constants::ISSUE_EDITED_BY);
+        $issue->setData(Constants::ISSUE_EDITED_BY, $this->normalizeEditorIds($editedBy));
+    }
 
-        $openIssues = [];
-        foreach ($issues as $issue) {
-            if ($issue->getData(Constants::ISSUE_IS_OPEN) === true) {
-                $openIssues[] = $issue;
-            }
+    /**
+     * Normalize editor IDs to array
+     *
+     * Converts the editedBy value from the form into a validated array of editor IDs.
+     * Handles both array and single value inputs, filtering out invalid IDs.
+     *
+     * @param mixed $editedBy The editor ID(s) from form (array, int, or other)
+     *
+     * @return array Normalized array of validated positive integer editor IDs
+     */
+    private function normalizeEditorIds(mixed $editedBy): array
+    {
+        if (is_array($editedBy)) {
+            return array_filter($editedBy, fn($id) => is_numeric($id) && $id > 0);
         }
 
-        return $openIssues;
+        if (is_numeric($editedBy) && $editedBy > 0) {
+            return [(int) $editedBy];
+        }
+
+        return [];
+    }
+
+    /**
+     * Sync editors for all submissions assigned to this issue
+     *
+     * Iterates through all submissions assigned to the issue and updates their
+     * editor assignments to match the issue's editor list.
+     *
+     * @param Issue $issue The issue whose submissions should be updated
+     * @param array $editorIds Array of editor user IDs to assign
+     *
+     * @return void
+     */
+    private function syncSubmissionEditors(Issue $issue, array $editorIds): void
+    {
+        $collector = Repo::submission()->getCollector();
+        $submissions = $collector->filterByContextIds([$issue->getData("journalId")])->getMany();
+
+        $editorService = new EditorAssignmentService($this);
+        $request = $this->getRequest();
+
+        foreach ($submissions as $submission) {
+            $publication = $submission->getCurrentPublication();
+            if (!$publication || $publication->getData("issueId") != $issue->getId()) {
+                continue;
+            }
+
+            $editorService->syncEditorsToSubmission($submission, $editorIds, $request);
+        }
     }
 }

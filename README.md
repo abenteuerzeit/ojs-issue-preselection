@@ -21,21 +21,28 @@
 
 ## Overview
 
-The Issue Preselection Plugin allows authors to select which journal issue their submission should be assigned to during the submission process. Editors can configure which issues are open for submissions and pre-assign guest editors who will automatically be assigned to incoming submissions.
+The Issue Preselection Plugin allows authors to select which journal issue their
+submission should be assigned to during the submission process. Editors can
+configure which issues are open for submissions and pre-assign guest editors who
+will automatically be assigned to incoming submissions.
 
 ## Features
 
 ### For Authors
 
-- **Issue Selection During Submission** - Select from available future issues when submitting
-- **Direct Response to Calls for Papers** - Submit directly to specific themed issues
+- **Issue Selection During Submission** - Select from available future issues
+  when submitting
+- **Direct Response to Calls for Papers** - Submit directly to specific themed
+  issues
 - **Filtered Issue List** - Only see issues that editors have marked as open
 
 ### For Editors
 
 - **Issue Configuration** - Mark issues as open/closed for author selection
-- **Editor Pre-assignment** - Assign guest editors to issues for automatic workflow assignment
-- **Automatic Workflow** - Submissions automatically assigned to configured editors with notifications
+- **Editor Pre-assignment** - Assign guest editors to issues for automatic
+  workflow assignment
+- **Automatic Workflow** - Submissions automatically assigned to configured
+  editors with notifications
 
 ## Requirements
 
@@ -47,9 +54,11 @@ The Issue Preselection Plugin allows authors to select which journal issue their
 
 ### Method 1: Manual Installation
 
-1. Download the latest release from the [releases page](https://github.com/abenteuerzeit/ojs-issue-preselection/releases)
+1. Download the latest release from the
+   [releases page](https://github.com/abenteuerzeit/ojs-issue-preselection/releases)
 2. Extract the archive
-3. Copy the `issuePreselection` folder to `plugins/generic/` in your OJS installation
+3. Copy the `issuePreselection` folder to `plugins/generic/` in your OJS
+   installation
 4. Log in to OJS as Administrator
 5. Navigate to **Settings > Website > Plugins**
 6. Find "Issue Preselection Plugin" under Generic Plugins
@@ -80,7 +89,8 @@ Click **Create** or **Edit** on an issue you want to configure
 
 <img width="800" alt="Create or Edit Issue" src="https://github.com/user-attachments/assets/87174d46-2cea-44f8-a2a1-17da128cb721" />
 
-**Edit** is shown after expanding the view by clicking on the triangular bullet to the left of the issue. You can also click on the name directly.
+**Edit** is shown after expanding the view by clicking on the triangular bullet
+to the left of the issue. You can also click on the name directly.
 
 <img width="800" alt="Issue Options" src="https://github.com/user-attachments/assets/a5bb768d-a66b-4de7-861f-681eea1ec99f" />
 
@@ -90,8 +100,13 @@ You'll see two new fields under **Issue Data**
 
 <img width="800" alt="Issue Data Fields" src="https://github.com/user-attachments/assets/cfa5bb5e-c359-44a3-bddd-73e04fbc0d60" />
 
-- **Enable for Submission**: Check to make this issue available for author selection
-- **Assigned Editors (Optional)**: Select one or more editors to automatically assign to submissions
+- **Enable for Submission**: Check to make this issue available for author
+  selection
+- **Assigned Editors (Optional)**: Select one or more editors to automatically
+  assign to submissions
+
+> Updates to editor assignments under the issue data tab apply to all active
+> submissions assigned to an issue and not scheduled for publication.
 
 **Step 4: Save Changes**
 
@@ -158,7 +173,8 @@ The plugin uses OJS's hook system exclusively for integration:
 - **Schema Hooks**: Extend issue and submission schemas with custom fields
 - **Form Hooks**: Add UI elements to issue and submission forms
 - **Template Hooks**: Display selected issue in review section
-- **Validation Hooks**: Process issue assignment and editor assignment on submission
+- **Validation Hooks**: Process issue assignment and editor assignment on
+  submission
 
 ### Data Storage
 
@@ -215,8 +231,10 @@ The plugin logs extensively with `[IssuePreselection]` prefix.
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/ojs-issue-preselection/issues)
-- **Documentation**: [Wiki](https://github.com/yourusername/ojs-issue-preselection/wiki)
+- **Issues**:
+  [GitHub Issues](https://github.com/abenteuerzeit/ojs-issue-preselection/issues)
+- **Documentation**:
+  [Wiki](https://github.com/abenteuerzeit/ojs-issue-preselection/wiki)
 - **OJS Forum**: [PKP Community Forum](https://forum.pkp.sfu.ca/)
 
 ## Contributing
@@ -230,4 +248,5 @@ Contributions are welcome! Please:
 
 ## License
 
-This plugin is licensed under the GNU General Public License v3.0. See [LICENSE](LICENSE) for details.
+This plugin is licensed under the GNU General Public License v3.0. See
+[LICENSE](LICENSE) for details.
