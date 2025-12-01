@@ -1,0 +1,37 @@
+on: [push, pull_request]
+name: issuePreselection
+jobs:
+    issuePreselection:
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                include:
+                    - application: ojs
+                      php-version: 8.2
+                      database: mysql
+                      ojs-version: stable-3_5_0
+                    - application: ojs
+                      php-version: 8.2
+                      database: mariadb
+                      ojs-version: stable-3_5_0
+                    - application: ojs
+                      php-version: 8.2
+                      database: pgsql
+                      ojs-version: stable-3_5_0
+
+        name: ${{ matrix.application }} - PHP ${{ matrix.php-version }} - ${{ matrix.database }}
+        steps:
+            - name: Checkout plugin
+              uses: actions/checkout@v4
+              with:
+                  path: issuePreselection
+
+            - name: Run PKP plugin tests
+              uses: pkp/pkp-github-actions@v1
+              with:
+                  node_version: 20
+                  branch: ${{ matrix.ojs-version }}
+                  repository: pkp
+                  plugin: true
+                  dataset_inject: true

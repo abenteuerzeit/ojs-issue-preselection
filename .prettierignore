@@ -1,0 +1,16 @@
+# Ignore artifacts:
+*.min.js
+build
+cache
+coverage
+cypress/screenshots
+cypress/videos
+dist
+node_modules
+plugins/*/templates/**/*.tpl
+public
+public/journals
+public/site
+templates/**/*.tpl
+templates/**/*.tpl.php
+vendor

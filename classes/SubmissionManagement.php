@@ -3,359 +3,349 @@
 /**
  * @file plugins/generic/issuePreselection/classes/SubmissionManagement.php
  *
- * Handles submission-related functionality for the Issue Preselection plugin
+ * Copyright (c) 2017-2023 Simon Fraser University
+ * Copyright (c) 2017-2023 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * @class SubmissionManagement
+ * @brief Handles submission-related functionality for the Issue Preselection plugin
  */
 
 namespace APP\plugins\generic\issuePreselection\classes;
 
 use APP\core\Application;
 use APP\facades\Repo;
+use APP\issue\Issue;
 use APP\plugins\generic\issuePreselection\IssuePreselectionPlugin;
+use APP\submission\Submission;
+use Exception;
+use PKP\context\Context;
 
-class SubmissionManagement
+class SubmissionManagement extends BaseManagement
 {
-    /** @var IssuePreselectionPlugin */
-    public IssuePreselectionPlugin $plugin;
+    /**
+     * Form handler for submission form modifications
+     *
+     * @var SubmissionFormHandler
+     */
+    private SubmissionFormHandler $formHandler;
 
-    /** @param IssuePreselectionPlugin $plugin */
+    /**
+     * Service for managing editor assignments
+     *
+     * @var EditorAssignmentService
+     */
+    private EditorAssignmentService $editorService;
+
+    /**
+     * Constructor
+     *
+     * Initializes the form handler and editor assignment service.
+     *
+     * @param IssuePreselectionPlugin $plugin Reference to the main plugin instance
+     */
     public function __construct(IssuePreselectionPlugin &$plugin)
     {
-        $this->plugin = &$plugin;
+        parent::__construct($plugin);
+        $this->formHandler = new SubmissionFormHandler();
+        $this->editorService = new EditorAssignmentService($this);
     }
 
     /**
      * Add preselectedIssueId to submission list props
-     * 
+     *
+     * Ensures the preselected issue ID is included in the submission list
+     * properties so it can be displayed in submission listings.
+     *
      * @hook Submission::getSubmissionsListProps
+     *
+     * @param string $hookName The name of the hook being called
+     * @param array $params Hook parameters [&$props]
+     *
+     * @return bool Always returns false to continue hook processing
      */
-    public function addSubmissionListProps(string $hookName, array $params): bool
+    public function addSubmissionListProps(string $hookName, array &$params): bool
     {
-        $props = &$params[0];
-        $props[] = 'preselectedIssueId';
-        error_log("[IssuePreselection] Added preselectedIssueId to submission list props");
+        $params[0][] = Constants::SUBMISSION_PRESELECTED_ISSUE_ID;
         return false;
     }
 
     /**
      * Add issue preselection field to submission schema
-     * 
+     *
+     * Adds the preselectedIssueId property to the submission schema,
+     * allowing submissions to store their preselected issue assignment.
+     *
      * @hook Schema::get::submission
+     *
+     * @param string $hookName The name of the hook being called
+     * @param array $params Hook parameters [&$schema]
+     *
+     * @return bool Always returns false to continue hook processing
      */
     public function addToSubmissionSchema(string $hookName, array $params): bool
     {
-        $schema = &$params[0];
-                
-        $schema->properties->preselectedIssueId = (object) [
-            'type' => 'integer',
-            'apiSummary' => true,
-            'writeDisabledInApi' => false,
-            'validation' => ['nullable']
+        $params[0]->properties->{Constants::SUBMISSION_PRESELECTED_ISSUE_ID} = (object) [
+            "type" => "integer",
+            "apiSummary" => true,
+            "writeDisabledInApi" => false,
+            "validation" => ["nullable"],
         ];
-        
-        error_log("[IssuePreselection] Added preselectedIssueId to submission schema");
-        
+
         return false;
     }
 
     /**
      * Add issue selector field to submission form
-     * 
+     *
+     * Injects an issue selection dropdown into the submission form,
+     * allowing authors to select which open issue their submission
+     * should be assigned to.
+     *
      * @hook Form::config::after
+     *
+     * @param string $hookName The name of the hook being called
+     * @param array $params Hook parameters [&$config, $form]
+     *
+     * @return bool Always returns false to continue hook processing
      */
     public function addToSubmissionForm(string $hookName, array $params): bool
     {
-        $config = &$params[0];
-        $form = $params[1];
-        
-        $formClass = get_class($form);
-        if ($formClass !== 'PKP\components\forms\submission\CommentsForTheEditors') {
+        if (!$this->formHandler->isCommentsForEditorsForm($params[1])) {
             return false;
         }
-        
-        error_log("[IssuePreselection] addToSubmissionForm called for CommentsForTheEditors form");
-        
-        $request = Application::get()->getRequest();
-        $context = $request->getContext();
-        
+
+        $context = $this->getContext();
         if (!$context) {
             return false;
         }
-        
-        $submission = null;
-        if (isset($config['action']) && preg_match('/submissions\/(\d+)/', $config['action'], $matches)) {
-            $submissionId = (int) $matches[1];
-            $submission = Repo::submission()->get($submissionId);
-            error_log("[IssuePreselection] Found submission ID from action URL: " . $submissionId);
-        }
-        
+
+        $submission = $this->formHandler->extractSubmissionFromConfig($params[0]);
         if (!$submission) {
-            error_log("[IssuePreselection] Could not find submission, skipping");
             return false;
         }
-        
-        $currentValue = $submission->getData('preselectedIssueId');
-        error_log("[IssuePreselection] Current preselectedIssueId: " . ($currentValue ?: 'none'));
-        
-        // Get issue management instance to access getOpenFutureIssues
-        $issueManagement = new \APP\plugins\generic\issuePreselection\classes\IssueManagement($this->plugin);
-        $issues = $issueManagement->getOpenFutureIssues($context->getId());
-        
+
+        $issues = IssueRepository::getOpenFutureIssues($context->getId());
         if (empty($issues)) {
-            error_log("[IssuePreselection] No open issues, skipping");
             return false;
         }
-        
-        $issueOptions = [[
-            'value' => 0,
-            'label' => __('plugins.generic.issuePreselection.selectOption')
-        ]];
-        
-        foreach ($issues as $issue) {
-            $issueOptions[] = [
-                'value' => (int) $issue->getId(),
-                'label' => $issue->getIssueIdentification()
-            ];
-        }
-        
-        $fieldConfig = [
-            'name' => 'preselectedIssueId',
-            'component' => 'field-select',
-            'label' => __('plugins.generic.issuePreselection.issueLabel'),
-            'description' => __('plugins.generic.issuePreselection.description.field'),
-            'options' => $issueOptions,
-            'value' => $currentValue ? (int) $currentValue : 0,
-            'isRequired' => true,
-            'groupId' => 'default'
-        ];
-        
-        $config['fields'][] = $fieldConfig;
-        
-        if (!isset($config['values'])) {
-            $config['values'] = [];
-        }
-        $config['values']['preselectedIssueId'] = $currentValue ? (int) $currentValue : 0;
-        
-        error_log("[IssuePreselection] Added preselectedIssueId field to form config with value: " . ($currentValue ?: '0'));
-        error_log("[IssuePreselection] Set form values[preselectedIssueId]: " . ($currentValue ?: '0'));
-        
+
+        $this->formHandler->addIssueFieldToForm($params[0], $submission, $issues);
+
         return false;
     }
 
     /**
      * Add issue information to the review section
-     * 
+     *
+     * Displays the selected issue in the submission wizard review section
+     * so authors can confirm their issue selection before submitting.
+     *
      * @hook Template::SubmissionWizard::Section::Review::Editors
+     *
+     * @param string $hookName The name of the hook being called
+     * @param array $params Hook parameters [$hookName, $smarty, &$output]
+     *
+     * @return bool Always returns false to continue hook processing
      */
     public function addIssueReviewSection(string $hookName, array $params): bool
     {
-        $smarty = $params[1];
-        $output = &$params[2];
-                
-        $submission = $smarty->getTemplateVars('submission');
-        
-        if (!$submission) {
-            error_log("[IssuePreselection] No submission found");
+        if (!$this->shouldShowReviewSection($params[1])) {
             return false;
         }
-        
-        $localeKey = $smarty->getTemplateVars('localeKey');
-        $submissionLocale = $submission->getData('locale');
-        
-        if ($localeKey !== $submissionLocale) {
-            error_log("[IssuePreselection] Skipping non-primary locale: {$localeKey}");
+
+        $context = $this->getContext();
+        if (!$context) {
             return false;
         }
-        
-        $request = Application::get()->getRequest();
-        $context = $request->getContext();
-        
-        // Get issue management instance to access getOpenFutureIssues
-        $issueManagement = new \APP\plugins\generic\issuePreselection\classes\IssueManagement($this->plugin);
-        $issues = $issueManagement->getOpenFutureIssues($context->getId());
-        
+
+        $issues = IssueRepository::getOpenFutureIssues($context->getId());
         if (empty($issues)) {
-            error_log("[IssuePreselection] No open issues available");
             return false;
         }
-        
-        $issueMap = [];
-        foreach ($issues as $issue) {
-            $issueMap[$issue->getId()] = $issue->getIssueIdentification();
-        }
-        
-        $smarty->assign('issuePreselectionMap', $issueMap);
-        
-        // Output Vue-compatible template - show when issue is selected
-        $output .= '<div class="submissionWizard__reviewPanel__item" v-if="submission.preselectedIssueId && submission.preselectedIssueId !== 0">';
-        $output .= '<h4 class="submissionWizard__reviewPanel__item__header">';
-        $output .= htmlspecialchars(__('plugins.generic.issuePreselection.issueLabel'));
-        $output .= '</h4>';
-        $output .= '<div class="submissionWizard__reviewPanel__item__value">';
-        
-        $output .= '{{ ';
-        $first = true;
-        foreach ($issueMap as $id => $title) {
-            if (!$first) {
-                $output .= ' : ';
-            }
-            $output .= 'submission.preselectedIssueId === ' . $id . ' ? ' . json_encode($title);
-            $first = false;
-        }
-        $output .= ' : "" }}';
-        
-        $output .= '</div>';
-        $output .= '</div>';
-        
-        // Output warning when no issue is selected
-        $output .= '<div class="submissionWizard__reviewPanel__item" v-if="!submission.preselectedIssueId || submission.preselectedIssueId === 0">';
-        $output .= '<h4 class="submissionWizard__reviewPanel__item__header">';
-        $output .= htmlspecialchars(__('plugins.generic.issuePreselection.issueLabel'));
-        $output .= '</h4>';
-        $output .= '<div class="submissionWizard__reviewPanel__item__value" style="color: #d00;">';
-        $output .= '<span class="fa fa-exclamation-triangle" aria-hidden="true"></span> ';
-        $output .= htmlspecialchars(__('plugins.generic.issuePreselection.error.issueRequired'));
-        $output .= '</div>';
-        $output .= '</div>';
-        
-        error_log("[IssuePreselection] Added Vue-compatible review section with " . count($issueMap) . " issues");
-        
+
+        $issueMap = $this->formHandler->buildIssueMap($issues);
+        $params[1]->assign("issueMap", $issueMap);
+        $params[2] .= $this->renderTemplate($params[1], "submissionReviewIssue.tpl");
+
         return false;
+    }
+
+    /**
+     * Check if review section should be shown
+     *
+     * Determines if the review section should display the issue information
+     * by checking if a submission exists and the locale matches.
+     *
+     * @param object $smarty The Smarty template engine instance
+     *
+     * @return bool True if the review section should be shown, false otherwise
+     */
+    private function shouldShowReviewSection(object $smarty): bool
+    {
+        $submission = $smarty->getTemplateVars("submission");
+        if (!$submission) {
+            return false;
+        }
+
+        $localeKey = $smarty->getTemplateVars("localeKey");
+        return $localeKey === $submission->getData("locale");
     }
 
     /**
      * Handle submission validation - assign issue and editors when submitted
-     * 
+     *
+     * Validates that an issue is selected when required, then assigns the
+     * submission to the selected issue and automatically assigns the issue's
+     * editors to the submission as guest editors.
+     *
      * @hook Submission::validateSubmit
+     *
+     * @param string $hookName The name of the hook being called
+     * @param array $params Hook parameters [&$errors, $submission, $context]
+     *
+     * @return bool Always returns false to continue hook processing
      */
     public function handleSubmissionValidate(string $hookName, array $params): bool
     {
-        $errors = &$params[0];
         $submission = $params[1];
         $context = $params[2];
-        
-        error_log("[IssuePreselection] handleSubmissionValidate called for submission " . $submission->getId());
-        
-        $issueId = $submission->getData('preselectedIssueId');
-        
-        error_log("[IssuePreselection] Preselected issue ID: " . ($issueId ?: 'none'));
-        
-        // Check if there are any open issues available
-        $issueManagement = new \APP\plugins\generic\issuePreselection\classes\IssueManagement($this->plugin);
-        $openIssues = $issueManagement->getOpenFutureIssues($context->getId());
-        
-        // Only validate if there are open issues available
-        if (!empty($openIssues)) {
-            if (!$issueId || $issueId === 0) {
-                error_log("[IssuePreselection] Validation failed: No issue selected");
-                $errors['preselectedIssueId'] = [__('plugins.generic.issuePreselection.error.issueRequired')];
-                // Don't return true - let other validations run, but the error is set
-            }
-        } else {
-            error_log("[IssuePreselection] No open issues available, skipping validation");
-        }
-        
-        $issue = Repo::issue()->get($issueId);
-        
-        if (!$issue || !$issue->getData('isOpen')) {
-            error_log("[IssuePreselection] Issue not found or not open, skipping");
+        $issueId = $submission->getData(Constants::SUBMISSION_PRESELECTED_ISSUE_ID);
+
+        if ($this->shouldRequireIssueSelection($context, $issueId)) {
+            $this->addValidationError($params[0]);
             return false;
         }
-        
-        error_log("[IssuePreselection] Processing issue assignment for submission " . $submission->getId() . " to issue " . $issueId);
-        
-        // Schedule the publication to the issue
-        $publication = $submission->getCurrentPublication();
-        if ($publication) {
-            error_log("[IssuePreselection] Current publication ID: " . $publication->getId() . ", current issueId: " . ($publication->getData('issueId') ?: 'none'));
-            
-            try {
-                $editedPublication = Repo::publication()->edit($publication, ['issueId' => $issueId]);
-                error_log("[IssuePreselection] Successfully scheduled publication " . $editedPublication->getId() . " to issue " . $issueId);
-                error_log("[IssuePreselection] New issueId value: " . ($editedPublication->getData('issueId') ?: 'none'));
-                
-                // Assign editors from the issue to the submission
-                $editorIds = $issue->getData('editedBy');
-                error_log("[IssuePreselection] Issue has " . (is_array($editorIds) ? count($editorIds) : 0) . " assigned editors");
-                
-                if (!empty($editorIds) && is_array($editorIds)) {
-                    $request = Application::get()->getRequest();
-                    $this->assignEditorsToSubmission($submission, $editorIds, $request);
-                }
-            } catch (\Exception $e) {
-                error_log("[IssuePreselection] ERROR scheduling publication: " . $e->getMessage());
-            }
-        } else {
-            error_log("[IssuePreselection] No publication found for submission");
+
+        if (!$issueId) {
+            return false;
         }
-        
+
+        $issue = $this->getValidIssue($issueId);
+        if (!$issue) {
+            $this->addValidationError($params[0], "plugins.generic.issuePreselection.error.issueNotAvailable");
+            return false;
+        }
+
+        try {
+            $this->assignSubmissionToIssue($submission, $issue);
+        } catch (Exception $e) {
+            $this->addValidationError($params[0], "plugins.generic.issuePreselection.error.assignmentFailed");
+            error_log(
+                "[IssuePreselection] Failed to assign submission {$submission->getId()} to issue {$issue->getId()}: {$e->getMessage()}",
+            );
+            return false;
+        }
+
         return false;
     }
 
     /**
-     * Assign editors to submission as Guest Editors
+     * Check if issue selection is required
+     *
+     * Determines if issue selection is mandatory by checking if there are open
+     * issues available and if no issue has been selected.
+     *
+     * @param Context $context The journal/press context
+     * @param mixed $issueId The selected issue ID (can be null, int, or other)
+     *
+     * @return bool True if issue selection is required but missing, false otherwise
      */
-    private function assignEditorsToSubmission($submission, array $editorIds, $request): void
+    private function shouldRequireIssueSelection(Context $context, mixed $issueId): bool
     {
-        error_log("[IssuePreselection] assignEditorsToSubmission called for submission " . $submission->getId());
-        
-        $context = $request->getContext();
-        
-        foreach ($editorIds as $editorId) {
-            error_log("[IssuePreselection] Processing editor ID: " . $editorId);
-            
-            $user = Repo::user()->get($editorId);
-            if (!$user) {
-                error_log("[IssuePreselection] User not found for ID: " . $editorId);
-                continue;
-            }
-            
-            // Get user's Section Editor (Guest Editor) group
-            $userGroups = \PKP\userGroup\UserGroup::withContextIds([$context->getId()])
-                ->withUserIds([$editorId])
-                ->withRoleIds([ROLE_ID_SUB_EDITOR])
-                ->get();
-            
-            // If no Section Editor role, try Manager role
-            if ($userGroups->isEmpty()) {
-                $userGroups = \PKP\userGroup\UserGroup::withContextIds([$context->getId()])
-                    ->withUserIds([$editorId])
-                    ->withRoleIds([ROLE_ID_MANAGER])
-                    ->get();
-            }
-            
-            if ($userGroups->isEmpty()) {
-                error_log("[IssuePreselection] No editor/manager group found for user " . $editorId);
-                continue;
-            }
-            
-            $editorGroup = $userGroups->first();
-            $roleType = $editorGroup->role_id == ROLE_ID_SUB_EDITOR ? 'Section Editor (Guest Editor)' : 'Manager';
-            error_log("[IssuePreselection] Found {$roleType} group ID: " . $editorGroup->user_group_id);
-            
-            // Check if already assigned
-            $existingAssignment = \PKP\stageAssignment\StageAssignment::withSubmissionIds([$submission->getId()])
-                ->withUserId($editorId)
-                ->withUserGroupId($editorGroup->user_group_id)
-                ->first();
-            
-            if ($existingAssignment) {
-                error_log("[IssuePreselection] Editor " . $editorId . " already assigned");
-                continue;
-            }
-            
-            // Create stage assignment
-            $stageAssignment = new \PKP\stageAssignment\StageAssignment();
-            $stageAssignment->submissionId = $submission->getId();
-            $stageAssignment->userGroupId = $editorGroup->user_group_id;
-            $stageAssignment->userId = $editorId;
-            $stageAssignment->dateAssigned = \Core::getCurrentDate();
-            $stageAssignment->recommendOnly = 0;
-            $stageAssignment->canChangeMetadata = 1;
-            $stageAssignment->save();
-            
-            error_log("[IssuePreselection] Assigned {$roleType} " . $editorId . " to submission " . $submission->getId());
+        $openIssues = IssueRepository::getOpenFutureIssues($context->getId());
+        return !empty($openIssues) && !$issueId;
+    }
+
+    /**
+     * Add validation error for missing or invalid issue
+     *
+     * Adds an error message to the errors array for the preselectedIssueId field.
+     *
+     * @param array &$errors The errors array (passed by reference)
+     * @param string $messageKey The locale key for the error message
+     *
+     * @return void
+     */
+    private function addValidationError(
+        array &$errors,
+        string $messageKey = "plugins.generic.issuePreselection.error.issueRequired",
+    ): void {
+        $errors[Constants::SUBMISSION_PRESELECTED_ISSUE_ID] = [__($messageKey)];
+    }
+
+    /**
+     * Get valid issue if it exists and is open
+     *
+     * Retrieves the issue and validates that it exists and is marked as open
+     * for submissions.
+     *
+     * @param int $issueId The issue ID to validate
+     *
+     * @return Issue|null The issue object or null if not found or not open
+     */
+    private function getValidIssue(int $issueId): ?object
+    {
+        $issue = Repo::issue()->get($issueId);
+
+        if (!$issue || !$issue->getData(Constants::ISSUE_IS_OPEN)) {
+            return null;
         }
-        
-        error_log("[IssuePreselection] Finished assigning editors");
+
+        return $issue;
+    }
+
+    /**
+     * Assign submission to issue and assign editors
+     *
+     * Updates the submission's current publication to be assigned to the specified
+     * issue, then assigns the issue's editors to the submission.
+     *
+     * @param Submission $submission The submission to assign
+     * @param Issue $issue The issue to assign the submission to
+     *
+     * @return void
+     *
+     * @throws Exception If the assignment fails
+     */
+    private function assignSubmissionToIssue(Submission $submission, Issue $issue): void
+    {
+        $publication = $submission->getCurrentPublication();
+        if (!$publication) {
+            error_log("[IssuePreselection] Cannot assign submission {$submission->getId()} - no current publication");
+            return;
+        }
+
+        try {
+            Repo::publication()->edit($publication, ["issueId" => $issue->getId()]);
+            $this->assignIssueEditorsToSubmission($submission, $issue);
+        } catch (Exception $exception) {
+            error_log(
+                "[IssuePreselection] Failed to assign submission {$submission->getId()} to issue {$issue->getId()}: {$exception->getMessage()}",
+            );
+            throw $exception;
+        }
+    }
+
+    /**
+     * Assign issue editors to submission
+     *
+     * Uses the issue's editedBy field as the single source of truth for editor
+     * assignments. Syncs the submission's editor assignments to match the issue.
+     *
+     * @param Submission $submission The submission to assign editors to
+     * @param Issue $issue The issue whose editors should be assigned
+     *
+     * @return void
+     */
+    private function assignIssueEditorsToSubmission(Submission $submission, Issue $issue): void
+    {
+        $editorIds = $issue->getData(Constants::ISSUE_EDITED_BY);
+
+        if (!is_array($editorIds)) {
+            $editorIds = [];
+        }
+
+        $this->editorService->syncEditorsToSubmission($submission, $editorIds, Application::get()->getRequest());
     }
 }

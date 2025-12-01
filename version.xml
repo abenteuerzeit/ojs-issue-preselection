@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE version SYSTEM "../../../lib/pkp/dtd/pluginVersion.dtd">
+<!--
+  * version.xml
+  *
+  * Copyright (c) 2017-2023 Simon Fraser University
+  * Copyright (c) 2017-2023 John Willinsky
+  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+  *
+  * Plugin version information.
+  -->
 <version>
     <application>issuePreselection</application>
     <type>plugins.generic</type>
-    <release>1.5.3.0</release>
-    <date>2025-11-11</date>
-    <lazy-load>0</lazy-load>
-    <class>APP\plugins\generic\issuePreselection\IssuePreselectionPlugin</class>
+    <release>1.6.0.4</release>
+    <date>2024-11-18</date>
+    <lazy-load>1</lazy-load>
+    <class>IssuePreselectionPlugin</class>
 </version>

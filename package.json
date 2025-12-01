@@ -1,12 +1,17 @@
 {
-  "name": "issue-preselection-plugin",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "test": "cypress run",
-    "test:open": "cypress open"
-  },
-  "devDependencies": {
-    "cypress": "^13.0.0"
-  }
+    "name": "issue-preselection-plugin",
+    "version": "1.5.4",
+    "private": true,
+    "scripts": {
+        "test": "cypress run",
+        "test:open": "cypress open",
+        "build": "build.cmd",
+        "release": "npm run build"
+    },
+    "devDependencies": {
+        "@faker-js/faker": "^10.1.0",
+        "@prettier/plugin-php": "^0.24.0",
+        "cypress": "^13.0.0",
+        "prettier": "3.6.2"
+    }
 }
